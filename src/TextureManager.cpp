@@ -1,5 +1,9 @@
 #include "../include/TextureManager.h"
 
+TextureManager * TextureManager::textureManagerInstance = 0;
+
+TextureManager::TextureManager(){}
+
 bool TextureManager::load(string filename, string id, SDL_Renderer* renderer)
 {
     SDL_Surface* temp = IMG_Load(filename.c_str());
@@ -32,4 +36,13 @@ void TextureManager::draw(string id, int x, int y, int width, int height, SDL_Re
    dstRect.y = y;
    
    SDL_RenderCopyEx(renderer, textureMap[id], &srcRect, &dstRect, 0, 0, flip);
+}
+
+
+TextureManager * TextureManager::Instance()
+{
+    if (textureManagerInstance == 0)
+        textureManagerInstance = new TextureManager();
+    return textureManagerInstance;
+
 }

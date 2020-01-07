@@ -13,9 +13,11 @@ class TextureManager
 public:
     void draw(string id, int x, int y, int width, int height, SDL_Renderer* renderer, SDL_RendererFlip flip);
     bool load(string filename, string id, SDL_Renderer* renderer); 
+    static TextureManager* Instance();
 private:
     TextureManager();
     map<string, SDL_Texture*> textureMap;
+    static TextureManager* textureManagerInstance;
 };
 
 #endif
