@@ -4,10 +4,10 @@ Game::Game(){}
 
 Game::~Game(){}
 
-bool Game::init(){}
+bool Game::init(){ return true; }
 void Game::render(){}
 void Game::update(){}
 void Game::handleEvents(){}
 void Game::clean(){}
 
-bool Game::running(){ return this->run };
+bool Game::running(){ return this->run; };
