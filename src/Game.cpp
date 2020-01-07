@@ -38,7 +38,23 @@ void Game::render()
 }
 
 void Game::update(){}
-void Game::handleEvents(){}
+
+void Game::handleEvents()
+{
+    SDL_Event event;
+    if (SDL_PoolEvent(&event))
+    {
+        switch(event.type)
+        {
+            case SDL_QUIT:
+                run = false;
+                break;
+            default:
+                break;
+        }
+    }
+    
+}
 
 void Game::clean()
 {
