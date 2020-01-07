@@ -42,7 +42,7 @@ void Game::update(){}
 void Game::handleEvents()
 {
     SDL_Event event;
-    if (SDL_PoolEvent(&event))
+    if (SDL_PollEvent(&event))
     {
         switch(event.type)
         {
