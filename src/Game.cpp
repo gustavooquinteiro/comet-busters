@@ -30,7 +30,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     run = true;
     return true;
 }
-void Game::render(){}
+
+void Game::render()
+{
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
+}
+
 void Game::update(){}
 void Game::handleEvents(){}
 void Game::clean(){}
