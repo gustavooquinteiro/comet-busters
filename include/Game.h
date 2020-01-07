@@ -1,4 +1,6 @@
-#include <SDL.h> 
+#ifndef _GAME_H_
+#define _GAME_H_
+#include <SDL2/SDL.h> 
 
 class Game
 {
@@ -17,4 +19,5 @@ private:
     SDL_Renderer* renderer;
     
     bool run;
-}
+};
+#endif
