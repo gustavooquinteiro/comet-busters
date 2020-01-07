@@ -39,6 +39,13 @@ void Game::render()
 
 void Game::update(){}
 void Game::handleEvents(){}
-void Game::clean(){}
+
+void Game::clean()
+{
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+    SDL_Quit();
+}
+
 
 bool Game::running(){ return this->run; };
