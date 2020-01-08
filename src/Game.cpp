@@ -15,7 +15,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
             if (renderer)
             {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-                if (!textureManager->Instance()->load("assets/player1.jpeg", "player1", renderer))
+                if (!textureManager->Instance()->load("assets/player1.jpeg", "player1", renderer) || 
+                    !textureManager->Instance()->load("assets/space.jpeg", "space", renderer))
                     return false;
             } else
             {
@@ -30,6 +31,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
         return false;
     }
     
+    gameObject = new GameObject(0, 0, 268, 268, "player1");
     player = new Player(0, 0, 268, 268, "player1");
     gameObjects.push_back(player);
     
@@ -40,9 +42,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 void Game::render()
 {
     SDL_RenderClear(renderer);
-    
+    textureManager->Instance()->draw("space", 0, 0, 640, 480, renderer);
     textureManager->Instance()->draw("player1", 0, 0, 268, 268, renderer);
-    for(auto gameObject: gameObject)
+    for(auto gameObject: gameObjects)
         gameObject->draw(renderer);
 
     SDL_RenderPresent(renderer);
