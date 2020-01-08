@@ -26,7 +26,8 @@ private:
     SDL_Renderer* renderer;
     
     vector<GameObject*> gameObjects;
-    Player* player;
+    GameObject* player;
+    GameObject* gameObject;
     
     TextureManager* textureManager;
     bool run;
