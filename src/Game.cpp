@@ -1,4 +1,5 @@
 #include "../include/Game.h"
+#include "../include/InputHandler.h"
 
 Game::Game(){}
 
@@ -52,6 +53,7 @@ void Game::render()
 
 void Game::update()
 {
+    InputHandler::Instance()->update();
     for(auto gameObject: gameObjects)
         gameObject->update();
 }
