@@ -2,12 +2,14 @@
 
 TextureManager * TextureManager::textureManagerInstance = 0;
 
-TextureManager::TextureManager(){}
+TextureManager::TextureManager()
+{
+    IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
+}
 
 bool TextureManager::load(string filename, string id, SDL_Renderer* renderer)
 {
     SDL_Surface* temp = IMG_Load(filename.c_str());
-    
     if (temp == 0)
         return false;
  
@@ -44,5 +46,4 @@ TextureManager * TextureManager::Instance()
     if (textureManagerInstance == 0)
         textureManagerInstance = new TextureManager();
     return textureManagerInstance;
-
 }
