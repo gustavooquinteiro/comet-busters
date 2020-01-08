@@ -1,11 +1,7 @@
 #include "../include/GameObject.h"
 #include "../include/TextureManager.h"
 
-GameObject::GameObject(int x, int y, int width, int height, std::string textureId): width(width), height(height), textureId(textureId)
-{
-    position = Vector2D(x, y);
-    
-}
+GameObject::GameObject(int x, int y, int width, int height, std::string textureId): position(x, y), velocity(0,0), width(width), height(height), textureId(textureId){}
 
 void GameObject::draw(SDL_Renderer* renderer)
 {
@@ -14,8 +10,7 @@ void GameObject::draw(SDL_Renderer* renderer)
 
 void GameObject::update()
 {
-    position.setX(position.getX() + 1);
-    position.setY(position.getY() + 1);
+    position += velocity;
 }
 
 void GameObject::clean()

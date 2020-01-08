@@ -16,6 +16,7 @@ public:
     virtual void clean();
 protected:
     Vector2D position;
+    Vector2D velocity;
     int width;
     int height;
     
