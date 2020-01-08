@@ -13,12 +13,12 @@ public:
     void setY(float y);
     
     float length();
-    Vector2D operator+(const Vector2D& vector) const;
-    friend Vector2D& operator+=(Vector2D& vector1, Vector2D& vector2);
+    Vector2D operator+(const Vector2D& vector);
+    Vector2D& operator+=(const Vector2D& vector2);
     Vector2D operator*(float scalar);
     Vector2D& operator*=(float scalar);
-    Vector2D operator-(const Vector2D& vector) const;
-    friend Vector2D& operator-=(Vector2D& vector1, Vector2D& vector2);
+    Vector2D operator-(const Vector2D& vector);
+    Vector2D& operator-=(const Vector2D& vector2);
     Vector2D operator/(float scalar);
     Vector2D& operator /=(float scalar);
     void normalize();

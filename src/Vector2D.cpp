@@ -30,16 +30,16 @@ float Vector2D::length()
     return sqrt(pow(this->x, 2) + pow(this->y, 2));
 }
 
-Vector2D Vector2D::operator+(const Vector2D& vector) const
+Vector2D Vector2D::operator+(const Vector2D& vector)
 {
     return Vector2D(this->x + vector.getX(), this->y + vector.getY());
 }
 
-Vector2D operator+=(Vector2D& vector1, const Vector2D& vector2)
+Vector2D& Vector2D::operator+=(const Vector2D& vector2)
 {
-    vector1.setX(vector1.getX() + vector2.getX());
-    vector1.setY(vector1.getY() + vector2.getY());
-    return vector1;
+    this->setX(this->getX() + vector2.getX());
+    this->setY(this->getY() + vector2.getY());
+    return *this;
 }
 
 Vector2D Vector2D::operator*(float scalar)
@@ -54,16 +54,16 @@ Vector2D& Vector2D::operator*=(float scalar)
     return *this;
 }
 
-Vector2D Vector2D::operator-(const Vector2D& vector) const
+Vector2D Vector2D::operator-(const Vector2D& vector)
 {
     return Vector2D(this->getX() - vector.getX(), this->getY() - vector.getY());
 }
 
-Vector2D operator-=(Vector2D& vector1, const Vector2D& vector2)
+Vector2D& Vector2D::operator-=(const Vector2D& vector2)
 {
-    vector1.setX(vector1.getX() - vector2.getX());
-    vector1.setY(vector1.getY() - vector2.getY());
-    return vector1;
+    this->setX(this->getX() - vector2.getX());
+    this->setY(this->getY() - vector2.getY());
+    return *this;
 }
 
 Vector2D Vector2D::operator/(float scalar)
