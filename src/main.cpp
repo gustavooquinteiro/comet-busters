@@ -1,21 +1,30 @@
 #include "../include/Game.h"
 const char* TITLE = "Comet Busters! 1994";
 
+const char* TITLE = "Comet Busters! 1994";
+const int FPS = 60;
+const int DELAY_TIME = 1000.0f / FPS;
+
 int main(int argc, char* argv[])
 {
-    Game* game = new Game();
-    game->init(TITLE, 100, 100, 640, 480, 0);
+    Uint32 frameStart, frameTime;
     
-    while(game->running())
+    Game::Instance()->init(TITLE, 100, 100, 640, 480, 0);
+   
+    while(Game::Instance()->running())
     {
-        game->handleEvents();
-        game->update();
-        game->render();
+        frameStart = SDL_GetTicks();
         
-        SDL_Delay(10);
+        Game::Instance()->handleEvents();
+        Game::Instance()->update();
+        Game::Instance()->render();
+        
+        frameTime = SDL_GetTicks() - frameStart;
+        if (frameTime < DELAY_TIME)
+            SDL_Delay((int) (DELAY_TIME - frameTime));
     }
     
-    game->clean();
+    Game::Instance()->clean();
     
     return 0;   
 }

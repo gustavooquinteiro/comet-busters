@@ -1,4 +1,7 @@
 #include "../include/Game.h"
+#include "../include/InputHandler.h"
+
+Game* Game::instance = 0;
 
 Game::Game(){}
 
@@ -59,19 +62,7 @@ void Game::update()
 
 void Game::handleEvents()
 {
-    SDL_Event event;
-    if (SDL_PollEvent(&event))
-    {
-        switch(event.type)
-        {
-            case SDL_QUIT:
-                run = false;
-                break;
-            default:
-                break;
-        }
-    }
-    
+     InputHandler::Instance()->update();   
 }
 
 void Game::clean()
@@ -83,3 +74,15 @@ void Game::clean()
 
 
 bool Game::running(){ return this->run; }
+
+Game * Game::Instance()
+{
+    if (instance == 0)
+        instance = new Game();
+    return instance;
+}
+
+void Game::quit()
+{
+    this->run = false;
+}

@@ -12,8 +12,6 @@ using namespace std;
 class Game
 {
 public:
-    Game();
-    ~Game();
     
     bool init(const char* title, int xpos, int ypos, int width, int height, int flags);
     void render();
@@ -21,7 +19,12 @@ public:
     void handleEvents();
     void clean();
     bool running();
+    void quit();
+    static Game* Instance();
 private:
+    Game();
+    ~Game();
+    static Game * instance;
     SDL_Window* window;
     SDL_Renderer* renderer;
     
