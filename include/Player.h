@@ -12,7 +12,7 @@ public:
     void draw(SDL_Renderer* renderer);
     void update();
     void clean();
-    long int getScore();
+    long int getScore() const;
 private:
     long int score;
 };

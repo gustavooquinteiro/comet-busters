@@ -21,4 +21,4 @@ void Player::clean()
     GameObject::clean();
 }
 
-long int Player::getScore(){ return this->score; }
+long int Player::getScore() const{ return this->score; }
