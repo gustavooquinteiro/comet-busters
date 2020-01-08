@@ -67,4 +67,4 @@ void Game::clean()
 }
 
 
-bool Game::running(){ return this->run; };
+bool Game::running(){ return this->run; }
