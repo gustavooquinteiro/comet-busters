@@ -17,3 +17,7 @@ void GameObject::clean()
 {
 }
 
+void GameObject::load()
+{
+}
+
