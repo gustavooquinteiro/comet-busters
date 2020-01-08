@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include "Vector2D.h"
+
 using namespace std;
 
 class GameObject
@@ -18,6 +19,7 @@ protected:
     Vector2D position;
     Vector2D velocity;
     Vector2D acceleration;
+
     int width;
     int height;
     

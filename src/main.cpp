@@ -1,4 +1,5 @@
 #include "../include/Game.h"
+const char* TITLE = "Comet Busters! 1994";
 
 const char* TITLE = "Comet Busters! 1994";
 const int FPS = 60;
@@ -8,9 +9,8 @@ int main(int argc, char* argv[])
 {
     Uint32 frameStart, frameTime;
     
-    
     Game::Instance()->init(TITLE, 100, 100, 640, 480, 0);
-    
+   
     while(Game::Instance()->running())
     {
         frameStart = SDL_GetTicks();
