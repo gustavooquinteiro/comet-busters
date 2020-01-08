@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <iostream>
+#include "Vector2D.h"
 using namespace std;
 
 class GameObject
@@ -14,8 +15,7 @@ public:
     virtual void update();
     virtual void clean();
 protected:
-    int x;
-    int y;
+    Vector2D position;
     int width;
     int height;
     
