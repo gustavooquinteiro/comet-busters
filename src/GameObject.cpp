@@ -1,7 +1,7 @@
 #include "../include/GameObject.h"
 #include "../include/TextureManager.h"
 
-GameObject::GameObject(int x, int y, int width, int height, std::string textureId): position(x, y), velocity(0,0), width(width), height(height), textureId(textureId){}
+GameObject::GameObject(int x, int y, int width, int height, std::string textureId): position(x, y), velocity(0,0), acceleration(0,0), width(width), height(height), textureId(textureId){}
 
 void GameObject::draw(SDL_Renderer* renderer)
 {
@@ -10,6 +10,7 @@ void GameObject::draw(SDL_Renderer* renderer)
 
 void GameObject::update()
 {
+    velocity += acceleration;
     position += velocity;
 }
 
