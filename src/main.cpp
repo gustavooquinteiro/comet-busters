@@ -8,23 +8,23 @@ int main(int argc, char* argv[])
 {
     Uint32 frameStart, frameTime;
     
-    Game* game = new Game();
-    game->init(TITLE, 100, 100, 640, 480, 0);
     
-    while(game->running())
+    Game::Instance()->init(TITLE, 100, 100, 640, 480, 0);
+    
+    while(Game::Instance()->running())
     {
         frameStart = SDL_GetTicks();
         
-        game->handleEvents();
-        game->update();
-        game->render();
+        Game::Instance()->handleEvents();
+        Game::Instance()->update();
+        Game::Instance()->render();
         
         frameTime = SDL_GetTicks() - frameStart;
         if (frameTime < DELAY_TIME)
             SDL_Delay((int) (DELAY_TIME - frameTime));
     }
     
-    game->clean();
+    Game::Instance()->clean();
     
     return 0;   
 }

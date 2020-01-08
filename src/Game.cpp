@@ -1,6 +1,8 @@
 #include "../include/Game.h"
 #include "../include/InputHandler.h"
 
+Game* Game::instance = 0;
+
 Game::Game(){}
 
 Game::~Game(){}
@@ -85,3 +87,10 @@ void Game::clean()
 
 
 bool Game::running(){ return this->run; }
+
+Game * Game::Instance()
+{
+    if (instance == 0)
+        instance = new Game();
+    return instance;
+}
