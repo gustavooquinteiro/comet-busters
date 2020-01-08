@@ -9,10 +9,10 @@ class GameObject
 {
 public:
     GameObject(int x, int y, int width, int height, string textureId);
-    void load();
-    void draw(SDL_Renderer* renderer);
-    void update();
-    void clean();
+    virtual void load();
+    virtual void draw(SDL_Renderer* renderer);
+    virtual void update();
+    virtual void clean();
 protected:
     int x;
     int y;
