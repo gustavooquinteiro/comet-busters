@@ -12,13 +12,33 @@ LDFLAGS  = `sdl2-config --libs` \
 
 INCLUDE = -I"/usr/include/SDL"
 
+ifeq ($(OS), Windows_NT)
+	ECHO = ECHO
+else
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S), Linux)
+		ECHO = echo -e -n
+	endif
+endif 
+
 all: build comet
 
 build:
-	@ mkdir build
+	@ $(ECHO) "Creating build folder...\n"
+	@ mkdir -p build
 	
 comet: $(OBJ)
+	@ $(ECHO) "Compiling $< in $@...\n"
 	@ g++ $(MAIN) $^ -o $(GAME) $(LDFLAGS)
-	
+	@ $(ECHO) "Executable created: $@\n"
+
 ./build/%.o: ./src/%.cpp ./include/%.h
+	@ $(ECHO) "Compiling $< in $@...\n"
 	@ g++ $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
+	@ $(ECHO) "Compiled $@\n"
+clean:
+	@ $(ECHO) "Cleaning workspace...\n"
+	@ rm -rf build/ $(GAME)
+	@ $(ECHO) "Workspace clean\n"
+
+.PHONY: all clean
