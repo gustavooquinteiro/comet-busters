@@ -30,8 +30,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
         return false;
     }
     
-    gameObject = GameObject(100, 100, 128, 82, "player1");
-    player.load(300, 300, 128, 82, "player1");
+    player = new Player(0, 0, 268, 268, "player1");
+    gameObjects.push_back(player);
     
     run = true;
     return true;
@@ -42,17 +42,18 @@ void Game::render()
     SDL_RenderClear(renderer);
     
     textureManager->Instance()->draw("player1", 0, 0, 268, 268, renderer);
-    gameObject.draw(renderer);
-    player.draw(renderer);
-    
+    for(auto gameObject: gameObject)
+        gameObject->draw(renderer);
+
     SDL_RenderPresent(renderer);
 }
 
 void Game::update()
 {
-    gameObject.update();
-    player.update();
+    for(auto gameObject: gameObjects)
+        gameObject->update();
 }
+    
 
 void Game::handleEvents()
 {

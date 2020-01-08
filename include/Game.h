@@ -1,10 +1,13 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 
-#include "TextureManager.h"
-#include "GameObject.h"
-#include "Player.h"
 #include <SDL2/SDL.h> 
+#include <vector>
+#include "Player.h"
+#include "GameObject.h"
+#include "TextureManager.h"
+
+using namespace std;
 
 class Game
 {
@@ -22,8 +25,8 @@ private:
     SDL_Window* window;
     SDL_Renderer* renderer;
     
-    GameObject gameObject;
-    Player player;
+    vector<GameObject*> gameObjects;
+    Player* player;
     
     TextureManager* textureManager;
     bool run;
