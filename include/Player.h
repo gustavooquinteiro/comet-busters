@@ -7,7 +7,8 @@
 class Player: public GameObject
 {
 public:
-    void load(int x, int y, int width, int height, std::string textureId);
+    Player(int x, int y, int width, int height, std::string textureId);
+    void load();
     void draw(SDL_Renderer* renderer);
     void update();
     void clean();
