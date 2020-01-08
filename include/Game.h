@@ -1,6 +1,9 @@
 #ifndef _GAME_H_
 #define _GAME_H_
-#include "../include/TextureManager.h"
+
+#include "TextureManager.h"
+#include "GameObject.h"
+#include "Player.h"
 #include <SDL2/SDL.h> 
 
 class Game
@@ -18,6 +21,9 @@ public:
 private:
     SDL_Window* window;
     SDL_Renderer* renderer;
+    
+    GameObject gameObject;
+    Player player;
     
     TextureManager* textureManager;
     bool run;
