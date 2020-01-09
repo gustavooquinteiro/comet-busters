@@ -1,5 +1,7 @@
 #include "../include/Game.h"
 #include "../include/InputHandler.h"
+#include "../include/MenuState.h"
+#include "../include/PlayState.h"
 
 Game* Game::instance = 0;
 
@@ -37,6 +39,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     gameObject = new GameObject(0, 0, 268, 268, "player1");
     player = new Player(0, 0, 268, 268, "player1");
     gameObjects.push_back(player);
+    gameStateMachine = new GameStateMachine();
+    gameStateMachine->changeState(new MenuState());
     
     run = true;
     return true;
@@ -62,7 +66,7 @@ void Game::update()
 
 void Game::handleEvents()
 {
-     InputHandler::Instance()->update();   
+     InputHandler::Instance()->update();
 }
 
 void Game::clean()
