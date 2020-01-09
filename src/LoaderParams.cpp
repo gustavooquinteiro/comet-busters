@@ -1,15 +1,13 @@
 #include "../include/LoaderParams.h"
 
-LoaderParams::LoaderParams(int x, int y, int width, int height, string textureID): position(Vector2D(x, y)), 
-                                                                                    velocity(Vector2D(0, 0)),
-                                                                                    acceleration(Vector2D(0,0)),
+LoaderParams::LoaderParams(int x, int y, int width, int height, string textureID): x(x), y(y),
                                                                                     width(width),
                                                                                     height(height),
                                                                                     textureID(textureID){}
 
-int LoaderParams::getX() const{ return position.getX(); }
+int LoaderParams::getX() const{ return x; }
 
-int LoaderParams::getY() const{ return position.getY(); }
+int LoaderParams::getY() const{ return y; }
 
 int LoaderParams::getHeight() const{ return height; }
 

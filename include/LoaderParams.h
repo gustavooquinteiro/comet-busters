@@ -15,10 +15,8 @@ public:
     int getX() const;
     int getY() const;
 private:
-    Vector2D position;
-    Vector2D velocity;
-    Vector2D acceleration;
-    
+    int x;
+    int y;
     int width;
     int height;
     
