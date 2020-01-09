@@ -16,10 +16,14 @@ public:
 class GameObjectFactory
 {
 public:
+    static GameObjectFactory* Instance();
     bool registerType(string typeID, BaseCreator* creator);
     GameObject* create(string typeID);
 private:
+    GameObjectFactory();
+    
     map<string, BaseCreator*> creators;
+    static GameObjectFactory* instance;
 }
 
 #endif

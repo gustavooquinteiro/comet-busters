@@ -1,5 +1,9 @@
 #include "../include/GameObjectFactory.h"
 
+GameObjectFactory* GameObjectFactory::instance = 0;
+
+GameObjectFactory::GameObjectFactory(){}
+
 bool GameObjectFactory::registerType(string typeId, BaseCreator* creator)
 {
     map<string, BaseCreator*>::iterator mapIterator = creators.find(typeId);
@@ -23,3 +27,9 @@ GameObject * GameObjectFactory::create(string typeID)
     return creator->createGameObject();
 }
 
+GameObjectFactory * GameObjectFactory::Instance()
+{
+    if (instance == 0)
+        instance = new GameObjectFactory();
+    return instance;
+}
