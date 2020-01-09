@@ -6,13 +6,18 @@
 class InputHandler
 {
 public:
+    bool isKeyDown(SDL_Scancode key);
+    void onKeyDown();
+    void onKeyUp();
+    
     static InputHandler* Instance();
     void update();
-    void clean();
 private:
     InputHandler();
     ~InputHandler();
     static InputHandler* instance;
+    
+    const Uint8* keyState;
 };
 
 #endif
