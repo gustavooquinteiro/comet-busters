@@ -49,10 +49,14 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 void Game::render()
 {
     SDL_RenderClear(renderer);
+    
     textureManager->Instance()->draw("space", 0, 0, 640, 480, renderer);
     textureManager->Instance()->draw("player1", 0, 0, 268, 268, renderer);
+    
     for(auto gameObject: gameObjects)
         gameObject->draw(renderer);
+    
+    gameStateMachine->render();
 
     SDL_RenderPresent(renderer);
 }
@@ -61,6 +65,8 @@ void Game::update()
 {
     for(auto gameObject: gameObjects)
         gameObject->update();
+    
+    gameStateMachine->update();
 }
     
 
@@ -75,7 +81,6 @@ void Game::clean()
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
 }
-
 
 bool Game::running(){ return this->run; }
 
