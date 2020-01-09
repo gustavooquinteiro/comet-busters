@@ -7,6 +7,7 @@
 class GameStateMachine
 {
 public:
+    GameStateMachine();
     void pushState(GameState* state);
     void changeState(GameState* state);
     void popState();

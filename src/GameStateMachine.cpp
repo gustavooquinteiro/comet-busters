@@ -1,5 +1,7 @@
 #include "../include/GameStateMachine.h"
 
+GameStateMachine::GameStateMachine(){}
+
 void GameStateMachine::pushState(GameState* state)
 {
     gameStates.push(state);
