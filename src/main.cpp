@@ -1,7 +1,6 @@
 #include "../include/Game.h"
 const char* TITLE = "Comet Busters! 1994";
 
-const char* TITLE = "Comet Busters! 1994";
 const int FPS = 60;
 const int DELAY_TIME = 1000.0f / FPS;
 

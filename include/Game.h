@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "GameObject.h"
 #include "TextureManager.h"
+#include "GameStateMachine.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ public:
 private:
     Game();
     ~Game();
+    
     static Game * instance;
     SDL_Window* window;
     SDL_Renderer* renderer;
@@ -31,6 +33,8 @@ private:
     vector<GameObject*> gameObjects;
     GameObject* player;
     GameObject* gameObject;
+    
+    GameStateMachine* gameStateMachine;
     
     TextureManager* textureManager;
     bool run;
