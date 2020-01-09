@@ -31,3 +31,18 @@ void GameStateMachine::changeState(GameState* state)
     pushState(state);
 }
 
+void GameStateMachine::update()
+{
+    if (!gameStates.empty())
+        gameStates.top()->update();
+        
+}
+
+void GameStateMachine::render()
+{
+    if (!gameStates.empty())
+        gameStates.top()->render();
+}
+
+
+
