@@ -1,7 +1,7 @@
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
 
-Player::Player(const LoaderParams* params): SDLGameObject(params) {}
+Player::Player(): SDLGameObject() {}
 
 
 void Player::draw()
@@ -35,8 +35,8 @@ void Player::handleInput()
 
 long int Player::getScore() const{ return this->score; }
 
-
-GameObject* PlayerCreator::createGameObject() const
+void Player::load(const LoaderParams* params)
 {
-    return new Player(new LoaderParams(0, 0, 268, 268, "player1"));
+    SDLGameObject::load(params);
 }
+
