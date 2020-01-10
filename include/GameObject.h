@@ -11,12 +11,12 @@ using namespace std;
 class GameObject
 {
 public:
-    virtual void load(const LoaderParams* params);
+    virtual void load(const LoaderParams* params) = 0;
     virtual void draw() = 0;
     virtual void update() = 0;
     virtual void clean() = 0;
 protected:
-    GameObject(const LoaderParams* params);
+    GameObject();
     virtual ~GameObject();
 
 };
@@ -25,10 +25,11 @@ protected:
 class SDLGameObject: public GameObject
 {
 public:
-    SDLGameObject(const LoaderParams* params);
+    SDLGameObject();
     virtual void draw();
     virtual void update();
     virtual void clean();
+    virtual void load(const LoaderParams* params);
 protected:
 
     Vector2D position;
