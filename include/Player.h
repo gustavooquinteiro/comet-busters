@@ -3,18 +3,26 @@
 
 #include <SDL2/SDL.h>
 #include "GameObject.h"
+#include "GameObjectFactory.h"
 
-class Player: public GameObject
+class Player: public SDLGameObject
 {
 public:
-    Player(int x, int y, int width, int height, std::string textureId);
-    void load();
-    void draw(SDL_Renderer* renderer);
-    void update();
-    void clean();
+    Player(const LoaderParams* params);
+    virtual void draw();
+    virtual void update();
+    virtual void clean();
     long int getScore() const;
 private:
+    void handleInput();    
+    
     long int score;
+};
+
+class PlayerCreator: public BaseCreator
+{
+public:
+    GameObject* createGameObject() const override;
 };
 
 #endif
