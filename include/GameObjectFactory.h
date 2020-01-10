@@ -24,6 +24,6 @@ private:
     
     map<string, BaseCreator*> creators;
     static GameObjectFactory* instance;
-}
+};
 
 #endif
