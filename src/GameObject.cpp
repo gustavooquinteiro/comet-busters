@@ -1,24 +1,24 @@
+#include "../include/Game.h"
 #include "../include/GameObject.h"
 #include "../include/TextureManager.h"
 
-GameObject::GameObject(int x, int y, int width, int height, std::string textureId): position(x, y), velocity(0,0), acceleration(0,0), width(width), height(height), textureId(textureId){}
-
-void GameObject::draw(SDL_Renderer* renderer)
+SDLGameObject::SDLGameObject(const LoaderParams* params): GameObject(params), 
+                                                            position(params->getX(), params->getY()),
+                                                            velocity(0, 0),
+                                                            acceleration(0, 0)
 {
-    TextureManager::Instance()->draw(textureId, (int)position.getX(), (int)position.getY(), width, height, renderer);    
+    width = params->getWidth();
+    height = params->getHeight();
+    textureId = params->getTextureID();
 }
 
-void GameObject::update()
+void SDLGameObject::draw()
+{
+    TextureManager::Instance()->draw(textureId, (int)position.getX(), (int)position.getY(), width, height, Game::Instance()->getRenderer());
+}
+
+void SDLGameObject::update()
 {
     velocity += acceleration;
     position += velocity;
 }
-
-void GameObject::clean()
-{
-}
-
-void GameObject::load()
-{
-}
-
