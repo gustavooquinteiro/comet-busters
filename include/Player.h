@@ -22,7 +22,10 @@ private:
 class PlayerCreator: public BaseCreator
 {
 public:
-    GameObject* createGameObject() const override;
+    GameObject* createGameObject() const
+    {
+        return new Player();
+    }
 };
 
 #endif
