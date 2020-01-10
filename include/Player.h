@@ -8,10 +8,11 @@
 class Player: public SDLGameObject
 {
 public:
-    Player(const LoaderParams* params);
+    Player();
     virtual void draw();
     virtual void update();
     virtual void clean();
+    virtual void load(const LoaderParams* params);
     long int getScore() const;
 private:
     void handleInput();    
