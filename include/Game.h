@@ -21,6 +21,7 @@ public:
     void clean();
     bool running();
     void quit();
+    SDL_Renderer* getRenderer();
     static Game* Instance();
 private:
     Game();
