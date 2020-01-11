@@ -41,6 +41,11 @@ comet: $(OBJ)
 	@ $(ECHO) "Compiling $< in $@...\n"
 	@ g++ $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
 	@ $(ECHO) "Compiled $@\n"
+./build/tinyxmlparser.o: ./src/tinyxmlparser.cpp ./include/tinyxml.h
+	@ $(ECHO) "Compiling $< in $@...\n"
+	@ g++ $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
+	@ $(ECHO) "Compiled $@\n"
+
 clean:
 	@ $(ECHO) "Cleaning workspace...\n"
 	@ rm -rf build/ $(GAME)
