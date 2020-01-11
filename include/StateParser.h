@@ -16,6 +16,6 @@ public:
 private:
     void parseObjects(TiXmlElement* stateRoot, vector<GameObject*>* objects);
     void parseTexture(TiXmlElement* stateRoot, vector<GameObject*>* textureIDs);
-}
+};
 
 #endif
