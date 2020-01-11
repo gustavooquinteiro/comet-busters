@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<STATES>
+    <MENU>
+        <TEXTURES>
+            <texture filename="assets/space.jpeg" ID="space" />
+        </TEXTURES>
+    </MENU>
+    
+    <PLAY>
+        <OBJECTS>
+            <object type="player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0" callbackID="1" />
+        </OBJECTS>
+    </PLAY>
+    
+    <GAMEOVER>
+    </GAMEOVER>
+        
+    
+</STATES>
+    
