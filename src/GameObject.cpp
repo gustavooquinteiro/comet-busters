@@ -2,6 +2,8 @@
 #include "../include/GameObject.h"
 #include "../include/TextureManager.h"
 
+GameObject::GameObject(){}
+
 SDLGameObject::SDLGameObject(): GameObject() {}
 
 void SDLGameObject::draw()
