@@ -21,5 +21,5 @@ void Comet::update()
 
 void Comet::clean()
 {
-    GameObject::clean();
+    SDLGameObject::clean();
 }
