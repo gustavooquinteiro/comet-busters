@@ -26,6 +26,7 @@ class SDLGameObject: public GameObject
 {
 public:
     SDLGameObject();
+    ~SDLGameObject();
     virtual void draw();
     virtual void update();
     virtual void clean();

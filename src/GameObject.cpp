@@ -30,3 +30,7 @@ void SDLGameObject::load(const LoaderParams* params)
 void SDLGameObject::clean()
 {
 }
+
+SDLGameObject::~SDLGameObject()
+{
+}
