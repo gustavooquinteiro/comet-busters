@@ -36,8 +36,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
         return false;
     }
     
-    gameObject = new GameObject(0, 0, 268, 268, "player1");
-    player = new Player(0, 0, 268, 268, "player1");
+    //gameObject = new GameObject(new LoaderParams(0, 0, 268, 268, "player1"));
+    player = new Player();
     gameObjects.push_back(player);
     gameStateMachine = new GameStateMachine();
     gameStateMachine->changeState(new MenuState());
@@ -54,7 +54,7 @@ void Game::render()
     textureManager->Instance()->draw("player1", 0, 0, 268, 268, renderer);
     
     for(auto gameObject: gameObjects)
-        gameObject->draw(renderer);
+        gameObject->draw();
     
     gameStateMachine->render();
 
@@ -99,3 +99,6 @@ void Game::quit()
 {
     this->run = false;
 }
+
+SDL_Renderer* Game::getRenderer(){ return this->renderer; }
+

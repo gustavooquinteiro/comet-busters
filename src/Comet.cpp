@@ -1,22 +1,25 @@
 #include "../include/Comet.h"
 
-Comet::Comet(int x, int y, int width, int height, std::string textureId): GameObject(x, y, width, height, textureId) {}
+Comet::Comet(): SDLGameObject() {}
 
-void Comet::load()
+void Comet::load(const LoaderParams* params)
 {
-    GameObject::load();
+    SDLGameObject::load(params);
 }
 
-void Comet::draw(SDL_Renderer* renderer)
+void Comet::draw()
 {
-    GameObject::draw(renderer);
+    SDLGameObject::draw();
 }
 
 void Comet::update()
 {
+    acceleration.setX(1);
+    
+    SDLGameObject::update();
 }
 
 void Comet::clean()
 {
-    GameObject::clean();
+    SDLGameObject::clean();
 }

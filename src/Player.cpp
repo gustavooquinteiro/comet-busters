@@ -1,19 +1,29 @@
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
 
-Player::Player(int x, int y, int width, int height, std::string textureId): GameObject(x, y, width, height, textureId) {}
+Player::Player(): SDLGameObject() {}
 
-void Player::load()
-{
-    GameObject::load();
-}
 
-void Player::draw(SDL_Renderer* renderer)
+void Player::draw()
 {
-    GameObject::draw(renderer);
+    SDLGameObject::draw();
 }
 
 void Player::update()
+{
+    acceleration.setX(1);
+    
+    handleInput();
+    
+    SDLGameObject::update();    
+}
+
+void Player::clean()
+{
+    SDLGameObject::clean();
+}
+
+void Player::handleInput()
 {
     if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
         velocity.setX(2);
@@ -21,12 +31,12 @@ void Player::update()
         velocity.setX(-2);
     if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
         velocity.setX(-2);
-    
-}
-
-void Player::clean()
-{
-    GameObject::clean();
 }
 
 long int Player::getScore() const{ return this->score; }
+
+void Player::load(const LoaderParams* params)
+{
+    SDLGameObject::load(params);
+}
+
