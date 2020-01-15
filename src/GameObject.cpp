@@ -2,7 +2,9 @@
 #include "../include/GameObject.h"
 #include "../include/TextureManager.h"
 
-GameObject::GameObject(){}
+GameObject::GameObject() {}
+
+GameObject::~GameObject() {}
 
 SDLGameObject::SDLGameObject(): GameObject() {}
 
