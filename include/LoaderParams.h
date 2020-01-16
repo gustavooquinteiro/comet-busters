@@ -20,7 +20,11 @@ private:
     int width;
     int height;
     
-    string textureID;    
+    string textureID;
+    
+    int numFrames;
+    int callbackID;
+    int animationSpeed;
 };
 
 #endif
