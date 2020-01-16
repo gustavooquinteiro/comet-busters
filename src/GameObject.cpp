@@ -6,7 +6,11 @@ GameObject::GameObject() {}
 
 GameObject::~GameObject() {}
 
-SDLGameObject::SDLGameObject(): GameObject() {}
+SDLGameObject::SDLGameObject(): GameObject() 
+{
+    currentFrame = 1;
+    currentRow = 1;
+}
 
 void SDLGameObject::draw()
 {
