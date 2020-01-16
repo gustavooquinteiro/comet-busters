@@ -1,11 +1,12 @@
-#ifndef _PLAY_STATE_H_
-#define _PLAY_STATE_H_
+#ifndef _GAME_OVER_STATE_H_
+#define _GAME_OVER_STATE_H_
 
 #include "GameState.h"
+#include "GameObject.h"
 #include <vector>
 using namespace std;
 
-class PlayState: public GameState
+class GameOverState: public GameState
 {
 public:
     void update() override;
@@ -13,12 +14,12 @@ public:
     
     bool onEnter() override;
     bool onExit() override;
-    
     string getStateID() const override;
-    
-    bool checkCollision(SDLGameObject* object, SDLGameObject* other);
 private:
-    static const string playID;
+    static void gameOverToMain();
+    static void restartPlay();
+    
+    static const string gameOverID;
     vector<GameObject*> gameObjects;
 };
 

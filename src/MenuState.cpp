@@ -1,6 +1,9 @@
 #include "../include/MenuState.h"
 #include "../include/StateParser.h"
 #include "../include/TextureManager.h"
+#include "../include/MenuButton.h"
+#include "../include/Game.h"
+#include "../include/PlayState.h"
 
 const string MenuState::menuID = "MENU";
 
@@ -60,4 +63,15 @@ bool MainMenuState::onExit()
         TextureManager::Instance()->clearFromTextureMap(textureIDs);
     }
 }
+
+void MainMenuState::exitFromMenu()
+{
+    Game::Instance()->quit();
+}
+
+void MainMenuState::menuToPlay()
+{
+    Game::Instance()->getStateMachine()->changeState(new PlayState());
+}
+
 
