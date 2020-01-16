@@ -15,6 +15,8 @@ public:
     bool onExit() override;
     
     string getStateID() const override;
+    
+    bool checkCollision(SDLGameObject* object, SDLGameObject* other);
 private:
     static const string playID;
     vector<GameObject*> gameObjects;
