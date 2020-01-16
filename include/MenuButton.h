@@ -6,10 +6,11 @@
 class MenuButton: public SDLGameObject
 {
 public:
-    MenuButton(const LoaderParams* params, void(*callback)());
+    MenuButton(void (*callback)());
     void update() override;
     void draw() override;
     void clean() override;
+    void load(const LoaderParams * params) override;
 private:
     enum button_state
     {
