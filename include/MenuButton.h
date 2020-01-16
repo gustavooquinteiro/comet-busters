@@ -10,6 +10,13 @@ public:
     void update() override;
     void draw() override;
     void clean() override;
+private:
+    enum button_state
+    {
+        MOUSE_OUT = 0,
+        MOUSE_OVER = 1,
+        CLICKED = 2
+    };
 };
 
 #endif
