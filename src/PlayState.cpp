@@ -32,6 +32,29 @@ void PlayState::update()
         object->update();
 }
 
+bool PlayState::checkCollision(SDLGameObject* object, SDLGameObject* other)
+{
+    int leftObject, rightObject, topObject, bottomObject;
+    int leftOther, rightOther, topOther, bottomOther;
+    
+    leftObject = object->getPosition().getX();
+    rightObject = object->getPosition().getX() + object->getWidth();
+    topObject = object->getPosition().getY();
+    bottomObject = object->getPosition().getY() + object->getHeight();
+    
+    leftOther = other->getPosition().getX();
+    rightOther = other->getPosition().getX() + other->getWidth();
+    topOther = other->getPosition().getY();
+    bottomOther = other->getPosition().getY() + other->getHeight();
+    
+    if (bottomObject <= topOther) return false;
+    if (topObject >= bottomOther) return false;
+    if (rightObject <= leftOther) return false;
+    if (leftObject >= rightOther) return false;
+    
+    return true;
+}
+
 string PlayState::getStateID() const{ return this->playID; }
 
 
