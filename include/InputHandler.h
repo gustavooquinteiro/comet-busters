@@ -23,6 +23,12 @@ private:
     const Uint8* keyState;
     
     vector<bool>mouseButtonStates;
+    enum mouse_buttons
+    {
+        LEFT = 0,
+        MIDDLE = 1,
+        RIGHT = 2
+    };
 };
 
 #endif
