@@ -81,4 +81,6 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
 
 bool InputHandler::getMouseButtonState(int buttonNumber){ return mouseButtonStates[buttonNumber]; }
 
+Vector2D * InputHandler::getMousePosition(){ return mousePosition; }
+
 
