@@ -28,6 +28,26 @@ void InputHandler::update()
     {
         switch(event.type)
         {
+            case SDL_MOUSEBUTTONDOWN:
+                if (event.button.button == SDL_BUTTON_LEFT)
+                    mouseButtonStates[LEFT] = true;
+                
+                if (event.button.button == SDL_BUTTON_MIDDLE)
+                    mouseButtonStates[MIDDLE] = true;
+                
+                if (event.button.button == SDL_BUTTON_RIGHT)
+                    mouseButtonStates[RIGHT] = true;
+                break;
+            case SDL_MOUSEBUTTONUP:
+                if (event.button.button == SDL_BUTTON_LEFT)
+                    mouseButtonStates[LEFT] = false;
+                
+                if (event.button.button == SDL_BUTTON_MIDDLE)
+                    mouseButtonStates[MIDDLE] = false;
+                
+                if (event.button.button == SDL_BUTTON_RIGHT)
+                    mouseButtonStates[RIGHT] = false;
+                break;
             case SDL_KEYUP:
                 onKeyUp();
                 break;
