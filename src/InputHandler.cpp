@@ -79,3 +79,6 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
     return false;
 }
 
+bool InputHandler::getMouseButtonState(int buttonNumber){ return mouseButtonStates[buttonNumber]; }
+
+
