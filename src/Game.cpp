@@ -102,3 +102,4 @@ void Game::quit()
 
 SDL_Renderer* Game::getRenderer(){ return this->renderer; }
 
+GameStateMachine * Game::getStateMachine(){ return this->gameStateMachine; }
