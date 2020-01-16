@@ -2,6 +2,9 @@
 #define _INPUT_HANDLER_H_
 
 #include <SDL2/SDL.h>
+#include <vector>
+
+using namespace std;
 
 class InputHandler
 {
@@ -18,6 +21,8 @@ private:
     static InputHandler* instance;
     
     const Uint8* keyState;
+    
+    vector<bool>mouseButtonStates;
 };
 
 #endif
