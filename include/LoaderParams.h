@@ -8,7 +8,7 @@ using namespace std;
 class LoaderParams
 {
 public:
-    LoaderParams(int x, int y, int width, int height, string textureID);
+    LoaderParams(int x, int y, int width, int height, string textureID, int numFrames, int callbackID, int animationSpeed);
     int getWidth() const;
     int getHeight() const;
     string getTextureID() const;
