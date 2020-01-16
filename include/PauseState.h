@@ -1,24 +1,24 @@
-#ifndef _PLAY_STATE_H_
-#define _PLAY_STATE_H_
+#ifndef _PAUSE_STATE_H_
+#define _PAUSE_STATE_H_
 
 #include "GameState.h"
+#include "GameObject.h"
 #include <vector>
 using namespace std;
 
-class PlayState: public GameState
+class PauseState: public GameState
 {
 public:
     void update() override;
     void render() override;
-    
     bool onEnter() override;
     bool onExit() override;
-    
     string getStateID() const override;
-    
-    bool checkCollision(SDLGameObject* object, SDLGameObject* other);
 private:
-    static const string playID;
+    static void pauseToMain();
+    static void resumePlay();
+    
+    static const string pauseID;
     vector<GameObject*> gameObjects;
 };
 

@@ -31,6 +31,10 @@ public:
     virtual void update();
     virtual void clean();
     virtual void load(const LoaderParams* params);
+    
+    Vector2D& getPosition();
+    int getHeight();
+    int getWidth();
 protected:
 
     Vector2D position;

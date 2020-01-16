@@ -34,6 +34,11 @@ void SDLGameObject::load(const LoaderParams* params)
     
 }
 
+int SDLGameObject::getHeight(){ return this->height; }
+
+int SDLGameObject::getWidth(){ return this->width; }
+
+Vector2D& SDLGameObject::getPosition(){ return this->position; }
 
 void SDLGameObject::clean()
 {
