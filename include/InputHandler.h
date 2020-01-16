@@ -2,6 +2,7 @@
 #define _INPUT_HANDLER_H_
 
 #include <SDL2/SDL.h>
+#include "Vector2D.h"
 #include <vector>
 
 using namespace std;
@@ -17,6 +18,7 @@ public:
     void update();
     
     bool getMouseButtonState(int buttonNumber);
+    Vector2D* getMousePosition();
 private:
     InputHandler();
     ~InputHandler();
@@ -24,13 +26,15 @@ private:
     
     const Uint8* keyState;
     
-    vector<bool>mouseButtonStates;
+    vector<bool> mouseButtonStates;
+    Vector2D* mousePosition;
     enum mouse_buttons
     {
         LEFT,
         MIDDLE,
         RIGHT
     };
+    
 };
 
 #endif
