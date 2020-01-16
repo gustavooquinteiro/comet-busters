@@ -14,6 +14,7 @@ public:
     void draw(string id, int x, int y, int width, int height, SDL_Renderer* renderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
     bool load(string filename, string id, SDL_Renderer* renderer); 
     static TextureManager* Instance();
+    void clearFromTextureMap(string id);
 private:
     TextureManager();
     map<string, SDL_Texture*> textureMap;
