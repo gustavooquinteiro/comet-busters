@@ -2,6 +2,7 @@
 #define _GAME_STATE_H_
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class GameState
@@ -14,6 +15,9 @@ public:
     virtual bool onExit() = 0;
     
     virtual string getStateID() const = 0;
+    
+protected:
+    vector<string> textureIDList;
 };
 
 #endif

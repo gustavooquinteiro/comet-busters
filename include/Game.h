@@ -23,6 +23,7 @@ public:
     void quit();
     SDL_Renderer* getRenderer();
     static Game* Instance();
+    GameStateMachine* getStateMachine();
 private:
     Game();
     ~Game();

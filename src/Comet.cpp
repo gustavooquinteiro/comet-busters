@@ -1,9 +1,10 @@
 #include "../include/Comet.h"
 
-Comet::Comet(const LoaderParams* params): SDLGameObject(params) {}
+Comet::Comet(): SDLGameObject() {}
 
-void Comet::load()
+void Comet::load(const LoaderParams* params)
 {
+    SDLGameObject::load(params);
 }
 
 void Comet::draw()
@@ -20,5 +21,5 @@ void Comet::update()
 
 void Comet::clean()
 {
-    GameObject::clean();
+    SDLGameObject::clean();
 }

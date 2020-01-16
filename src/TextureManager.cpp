@@ -47,3 +47,8 @@ TextureManager * TextureManager::Instance()
         textureManagerInstance = new TextureManager();
     return textureManagerInstance;
 }
+
+void TextureManager::clearFromTextureMap(string id)
+{
+    textureMap.erase(id);
+}

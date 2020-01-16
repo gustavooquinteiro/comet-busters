@@ -7,8 +7,8 @@
 class Comet: public SDLGameObject
 {
 public:
-    Comet(const LoaderParams* params);
-    virtual void load();
+    Comet();
+    virtual void load(const LoaderParams* params);
     virtual void draw();
     virtual void update();
     virtual void clean();

@@ -3,6 +3,8 @@
 
 using namespace std;
 
+Vector2D::Vector2D(): x(0), y(0) {}
+
 Vector2D::Vector2D(float x_position, float y_position): x(x_position), y(y_position) {}
 
 float Vector2D::getX() const

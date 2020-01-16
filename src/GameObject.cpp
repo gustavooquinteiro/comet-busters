@@ -2,7 +2,15 @@
 #include "../include/GameObject.h"
 #include "../include/TextureManager.h"
 
-SDLGameObject::SDLGameObject(): GameObject() {}
+GameObject::GameObject() {}
+
+GameObject::~GameObject() {}
+
+SDLGameObject::SDLGameObject(): GameObject() 
+{
+    currentFrame = 1;
+    currentRow = 1;
+}
 
 void SDLGameObject::draw()
 {
@@ -26,7 +34,16 @@ void SDLGameObject::load(const LoaderParams* params)
     
 }
 
+int SDLGameObject::getHeight(){ return this->height; }
+
+int SDLGameObject::getWidth(){ return this->width; }
+
+Vector2D& SDLGameObject::getPosition(){ return this->position; }
 
 void SDLGameObject::clean()
+{
+}
+
+SDLGameObject::~SDLGameObject()
 {
 }
