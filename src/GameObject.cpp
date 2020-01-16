@@ -6,11 +6,7 @@ GameObject::GameObject() {}
 
 GameObject::~GameObject() {}
 
-SDLGameObject::SDLGameObject(): GameObject() 
-{
-    currentFrame = 1;
-    currentRow = 1;
-}
+SDLGameObject::SDLGameObject(): GameObject() {}
 
 void SDLGameObject::draw()
 {
@@ -31,7 +27,8 @@ void SDLGameObject::load(const LoaderParams* params)
     width = params->getWidth();
     height = params->getHeight();
     textureId = params->getTextureID();
-    
+    currentFrame = 1;
+    currentRow = 1;
 }
 
 int SDLGameObject::getHeight(){ return this->height; }
