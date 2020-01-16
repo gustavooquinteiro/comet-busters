@@ -15,6 +15,8 @@ public:
     
     static InputHandler* Instance();
     void update();
+    
+    bool getMouseButtonState(int buttonNumber);
 private:
     InputHandler();
     ~InputHandler();
