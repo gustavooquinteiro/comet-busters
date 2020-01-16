@@ -19,6 +19,7 @@ public:
     
     bool getMouseButtonState(int buttonNumber);
     Vector2D* getMousePosition();
+    void reset();
 private:
     InputHandler();
     ~InputHandler();
