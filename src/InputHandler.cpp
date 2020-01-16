@@ -28,6 +28,10 @@ void InputHandler::update()
     {
         switch(event.type)
         {
+            case SDL_MOUSEMOTION:
+                mousePosition->setX(event.motion.x);
+                mousePosition->setY(event.motion.y);
+                break;
             case SDL_MOUSEBUTTONDOWN:
                 if (event.button.button == SDL_BUTTON_LEFT)
                     mouseButtonStates[LEFT] = true;
