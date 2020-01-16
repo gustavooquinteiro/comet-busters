@@ -40,8 +40,9 @@ protected:
     int width;
     int height;
     
- 
-    
+    int currentRow;
+    int currentFrame;
+        
     string textureId;
 };
 
