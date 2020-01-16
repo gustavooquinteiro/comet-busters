@@ -2,6 +2,7 @@
 #include "../include/PlayState.h"
 #include "../include/PauseState.h"
 #include "../include/InputHandler.h"
+#include "../include/GameOverState.h"
 
 const string PlayState::playID = "PLAY";
 
@@ -30,6 +31,13 @@ void PlayState::update()
     
     for (auto object: gameObjects)
         object->update();
+    
+    SDLGameObject* player = dynamic_cast<SDLGameObject*>(gameObjects[0]); 
+    for (int i = 1; i <= gameObjects.size(); i++)
+    {
+        if (checkCollision(player, dynamic_cast<SDLGameObject*>(gameObjects[i])))
+            Game::Instance()->getStateMachine()->pushState(new GameOverState());
+    }
 }
 
 bool PlayState::checkCollision(SDLGameObject* object, SDLGameObject* other)
