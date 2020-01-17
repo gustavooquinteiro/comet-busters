@@ -27,9 +27,15 @@ void SDLGameObject::load(const LoaderParams* params)
     width = params->getWidth();
     height = params->getHeight();
     textureId = params->getTextureID();
-    
+    currentFrame = 1;
+    currentRow = 1;
 }
 
+int SDLGameObject::getHeight(){ return this->height; }
+
+int SDLGameObject::getWidth(){ return this->width; }
+
+Vector2D& SDLGameObject::getPosition(){ return this->position; }
 
 void SDLGameObject::clean()
 {

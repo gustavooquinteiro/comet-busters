@@ -2,7 +2,7 @@
 #include "../include/StateParser.h"
 #include "../include/TextureManager.h"
 
-bool StateParser::parseState(const char* stateFile, string stateID, vector<GameObject*>* objects, vector<GameObject*>* textureIDs)
+bool StateParser::parseState(const char* stateFile, string stateID, vector<GameObject*>* objects, vector<string>* textureIDs)
 {
     TiXmlDocument xmlDoc;
     if (!xmlDoc.LoadFile(stateFile))
@@ -24,7 +24,7 @@ bool StateParser::parseState(const char* stateFile, string stateID, vector<GameO
      for(TiXmlElement* element = stateRoot->FirstChildElement(); element != NULL; element = element->NextSiblingElement())
     {
         if (element->Value() == string("TEXTURES"))
-            stateRoot = element;
+            textureRoot = element;
     }
     parseTexture(textureRoot, textureIDs);
     TiXmlElement* objectRoot = 0;
@@ -39,12 +39,13 @@ bool StateParser::parseState(const char* stateFile, string stateID, vector<GameO
     return true;
 }
 
-void StateParser::parseTexture(TiXmlElement* stateRoot, vector<GameObject *>* textureIDs)
+void StateParser::parseTexture(TiXmlElement* stateRoot, vector<string>* textureIDs)
 {
     for(TiXmlElement* element = stateRoot->FirstChildElement(); element != NULL; element = element->NextSiblingElement())
     {
         string filename = element->Attribute("filename");
         string id = element->Attribute("ID");
+        textureIDs->push_back(id);
         TextureManager::Instance()->load(filename, id, Game::Instance()->getRenderer());
     }
 }
@@ -53,18 +54,21 @@ void StateParser::parseObjects(TiXmlElement* stateRoot, vector<GameObject *>* ob
 {
      for(TiXmlElement* element = stateRoot->FirstChildElement(); element != NULL; element = element->NextSiblingElement())
     {
-        int x, y, width, height;
+        int x, y, width, height, numFrames, callbackID, animSpeed;
         string textureID;
         
         element->Attribute("x", &x);
         element->Attribute("y", &y);
         element->Attribute("width", &width);
         element->Attribute("height", &height);
+        element->Attribute("numFrames", &numFrames);
+        element->Attribute("callbackID", &callbackID);
+        element->Attribute("animSpeed", &animSpeed);
         
         textureID = element->Attribute("textureID");
         
         GameObject* gameObject = GameObjectFactory::Instance()->create(element->Attribute("type"));
-        gameObject->load(new LoaderParams(x, y, width, height, textureID));
+        gameObject->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
         objects->push_back(gameObject);
     }
     
