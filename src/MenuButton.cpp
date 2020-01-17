@@ -9,13 +9,13 @@ void MenuButton::update()
     if (mousePosition->getX() < (position.getX() + width) && mousePosition->getX() > position.getX() && 
         mousePosition->getY() < (position.getY() + height) && mousePosition->getY() > position.getY())
     {
-        if (InputHandler::Instance()->getMouseButtonState(LEFT) && buttonReleased)
+        if (InputHandler::Instance()->getMouseButtonState(InputHandler::LEFT) && buttonReleased)
         {
             currentFrame = CLICKED;
             callback();
             buttonReleased = false;
         }
-        else if (!InputHandler::Instance()->getMouseButtonState(LEFT))
+        else if (!InputHandler::Instance()->getMouseButtonState(InputHandler::LEFT))
         {
             buttonReleased = true;
             currentFrame = MOUSE_OVER; 
