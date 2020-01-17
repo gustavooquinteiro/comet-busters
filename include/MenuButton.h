@@ -11,6 +11,8 @@ public:
     void draw() override;
     void clean() override;
     void load(const LoaderParams * params) override;
+    void setCallbackID(void (*callback()));
+    int getCallbackID();
 private:
     enum button_state
     {
