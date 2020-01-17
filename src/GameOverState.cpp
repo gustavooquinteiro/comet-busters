@@ -8,7 +8,7 @@ const string GameOverState::gameOverID = "GAMEOVER";
 
 void GameOverState::gameOverToMain()
 {
-    Game::Instance()->getStateMachine()->changeState(new MenuState());
+    Game::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
 
 void GameOverState::restartPlay()
