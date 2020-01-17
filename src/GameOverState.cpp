@@ -18,10 +18,12 @@ void GameOverState::restartPlay()
 
 bool GameOverState::onEnter()
 {
+    return true;
 }
 
 bool GameOverState::onExit()
 {
+    return true;
 }
 
 void GameOverState::render()
