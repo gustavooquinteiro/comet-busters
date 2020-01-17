@@ -6,6 +6,7 @@
 #include "../include/PlayState.h"
 
 const string MenuState::menuID = "MENU";
+const string MainMenuState::menuID = "MENU";
 
 bool MenuState::onEnter()
 {
@@ -29,6 +30,8 @@ void MenuState::update()
 
 string MenuState::getStateID() const{ return this->menuID; }
 
+
+MainMenuState::MainMenuState(): MenuState(){}
 
 string MainMenuState::getStateID() const{ return this->menuID; }
 
@@ -73,6 +76,16 @@ void MainMenuState::exitFromMenu()
 void MainMenuState::menuToPlay()
 {
     Game::Instance()->getStateMachine()->changeState(new PlayState());
+}
+
+void MainMenuState::render()
+{
+    MenuState::render();
+}
+
+void MainMenuState::update()
+{
+    MenuState::update();
 }
 
 
