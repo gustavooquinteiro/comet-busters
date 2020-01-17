@@ -40,7 +40,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     player = new Player();
     gameObjects.push_back(player);
     gameStateMachine = new GameStateMachine();
-    gameStateMachine->changeState(new MenuState());
+    gameStateMachine->changeState(new MainMenuState());
     
     run = true;
     return true;
