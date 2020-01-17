@@ -62,6 +62,7 @@ bool MainMenuState::onExit()
     {
         TextureManager::Instance()->clearFromTextureMap(textureIDs);
     }
+    return true;
 }
 
 void MainMenuState::exitFromMenu()
