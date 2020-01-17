@@ -1,7 +1,7 @@
 #include "../include/MenuButton.h"
 #include "../include/InputHandler.h"
 
-MenuButton::MenuButton(void (*callback)()): callback(callback) {}
+MenuButton::MenuButton(){}
 
 void MenuButton::update()
 {
