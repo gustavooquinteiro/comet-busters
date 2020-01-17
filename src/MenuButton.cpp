@@ -44,6 +44,6 @@ void MenuButton::load(const LoaderParams* params)
     currentFrame = MOUSE_OUT;
 }
 
-void MenuButton::setCallbackID(void (*callback)()){ this->callback = callback; }
+void MenuButton::setCallback(void (*callback)()){ this->callback = callback; }
 
 int MenuButton::getCallbackID(){ return this->callbackID; }
