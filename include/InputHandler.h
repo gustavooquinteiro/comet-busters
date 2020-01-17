@@ -20,6 +20,13 @@ public:
     bool getMouseButtonState(int buttonNumber);
     Vector2D* getMousePosition();
     void reset();
+    
+    enum mouse_buttons
+    {
+        LEFT,
+        MIDDLE,
+        RIGHT
+    };
 private:
     InputHandler();
     ~InputHandler();
@@ -28,14 +35,7 @@ private:
     const Uint8* keyState;
     
     vector<bool> mouseButtonStates;
-    Vector2D* mousePosition;
-    enum mouse_buttons
-    {
-        LEFT,
-        MIDDLE,
-        RIGHT
-    };
-    
+    Vector2D* mousePosition;  
 };
 
 #endif

@@ -7,7 +7,7 @@ const string PauseState::pauseID = "PAUSE";
 
 void PauseState::pauseToMain()
 {
-    Game::Instance()->getStateMachine()->changeState(new MenuState());
+    Game::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
 
 void PauseState::resumePlay()

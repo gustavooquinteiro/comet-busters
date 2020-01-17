@@ -1,7 +1,9 @@
 #include "../include/Game.h"
+#include "../include/GameObjectFactory.h"
 #include "../include/InputHandler.h"
 #include "../include/MenuState.h"
 #include "../include/PlayState.h"
+#include "../include/MenuButton.h"
 
 Game* Game::instance = 0;
 
@@ -35,12 +37,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     {
         return false;
     }
-    
+    GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
     //gameObject = new GameObject(new LoaderParams(0, 0, 268, 268, "player1"));
     player = new Player();
     gameObjects.push_back(player);
     gameStateMachine = new GameStateMachine();
-    gameStateMachine->changeState(new MenuState());
+    gameStateMachine->changeState(new MainMenuState());
     
     run = true;
     return true;
