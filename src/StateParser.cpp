@@ -53,18 +53,21 @@ void StateParser::parseObjects(TiXmlElement* stateRoot, vector<GameObject *>* ob
 {
      for(TiXmlElement* element = stateRoot->FirstChildElement(); element != NULL; element = element->NextSiblingElement())
     {
-        int x, y, width, height;
+        int x, y, width, height, numFrames, callbackID, animSpeed;
         string textureID;
         
         element->Attribute("x", &x);
         element->Attribute("y", &y);
         element->Attribute("width", &width);
         element->Attribute("height", &height);
+        element->Attribute("numFrames", &numFrames);
+        element->Attribute("callbackID", &callbackID);
+        element->Attribute("animSpeed", &animSpeed);
         
         textureID = element->Attribute("textureID");
         
         GameObject* gameObject = GameObjectFactory::Instance()->create(element->Attribute("type"));
-        gameObject->load(new LoaderParams(x, y, width, height, textureID));
+        gameObject->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
         objects->push_back(gameObject);
     }
     
