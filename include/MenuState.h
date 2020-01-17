@@ -32,6 +32,7 @@ private:
 class MainMenuState: public MenuState
 {
 public:
+    MainMenuState();
     void update() override;
     void render() override;
     
