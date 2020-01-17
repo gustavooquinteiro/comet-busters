@@ -23,6 +23,7 @@ private:
     
     void (*callback)();
     bool buttonReleased;
+    int callbackID;
 };
 
 #endif
