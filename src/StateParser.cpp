@@ -24,7 +24,7 @@ bool StateParser::parseState(const char* stateFile, string stateID, vector<GameO
      for(TiXmlElement* element = stateRoot->FirstChildElement(); element != NULL; element = element->NextSiblingElement())
     {
         if (element->Value() == string("TEXTURES"))
-            stateRoot = element;
+            textureRoot = element;
     }
     parseTexture(textureRoot, textureIDs);
     TiXmlElement* objectRoot = 0;
