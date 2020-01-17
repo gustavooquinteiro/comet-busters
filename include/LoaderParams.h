@@ -14,6 +14,7 @@ public:
     string getTextureID() const;
     int getX() const;
     int getY() const;
+    int getCallbackID() const;
 private:
     int x;
     int y;
