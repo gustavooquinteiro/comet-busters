@@ -40,4 +40,10 @@ void MenuButton::draw()
 void MenuButton::load(const LoaderParams* params)
 {
     SDLGameObject::load(params);
+    callbackID = params->getCallbackID();    
+    currentFrame = MOUSE_OUT;
 }
+
+void MenuButton::setCallbackID(void (*callback)()){ this->callback = callback; }
+
+int MenuButton::getCallbackID(){ return this->callbackID; }
