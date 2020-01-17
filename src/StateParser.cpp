@@ -45,6 +45,7 @@ void StateParser::parseTexture(TiXmlElement* stateRoot, vector<string>* textureI
     {
         string filename = element->Attribute("filename");
         string id = element->Attribute("ID");
+        textureIDs->push_back(id);
         TextureManager::Instance()->load(filename, id, Game::Instance()->getRenderer());
     }
 }
