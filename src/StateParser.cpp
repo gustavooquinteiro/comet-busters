@@ -2,7 +2,7 @@
 #include "../include/StateParser.h"
 #include "../include/TextureManager.h"
 
-bool StateParser::parseState(const char* stateFile, string stateID, vector<GameObject*>* objects, vector<GameObject*>* textureIDs)
+bool StateParser::parseState(const char* stateFile, string stateID, vector<GameObject*>* objects, vector<string>* textureIDs)
 {
     TiXmlDocument xmlDoc;
     if (!xmlDoc.LoadFile(stateFile))
@@ -39,7 +39,7 @@ bool StateParser::parseState(const char* stateFile, string stateID, vector<GameO
     return true;
 }
 
-void StateParser::parseTexture(TiXmlElement* stateRoot, vector<GameObject *>* textureIDs)
+void StateParser::parseTexture(TiXmlElement* stateRoot, vector<string>* textureIDs)
 {
     for(TiXmlElement* element = stateRoot->FirstChildElement(); element != NULL; element = element->NextSiblingElement())
     {

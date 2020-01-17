@@ -12,10 +12,10 @@ class GameObject;
 class StateParser
 {
 public:
-    bool parseState(const char* stateFile, string stateID, vector<GameObject*>* objects, vector<GameObject*>* textureIDs);
+    bool parseState(const char* stateFile, string stateID, vector<GameObject*>* objects, vector<string>* textureIDs);
 private:
     void parseObjects(TiXmlElement* stateRoot, vector<GameObject*>* objects);
-    void parseTexture(TiXmlElement* stateRoot, vector<GameObject*>* textureIDs);
+    void parseTexture(TiXmlElement* stateRoot, vector<string>* textureIDs);
 };
 
 #endif
