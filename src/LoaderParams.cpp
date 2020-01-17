@@ -19,5 +19,4 @@ int LoaderParams::getWidth() const{ return width; }
 
 string LoaderParams::getTextureID() const{ return textureID; }
 
-
-
+int LoaderParams::getCallbackID() const{ return callbackID; }
