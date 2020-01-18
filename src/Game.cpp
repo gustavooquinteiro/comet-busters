@@ -21,10 +21,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
             renderer = SDL_CreateRenderer(window, -1, 0);
             if (renderer)
             {
-                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-                if (!textureManager->Instance()->load("assets/player1.jpeg", "player1", renderer) || 
-                    !textureManager->Instance()->load("assets/space.jpeg", "space", renderer))
-                    return false;
+                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);                
             } else
             {
                 return false;
@@ -38,9 +35,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
         return false;
     }
     GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
-    //gameObject = new GameObject(new LoaderParams(0, 0, 268, 268, "player1"));
-    player = new Player();
-    gameObjects.push_back(player);
+    GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
     gameStateMachine = new GameStateMachine();
     gameStateMachine->changeState(new MainMenuState());
     
@@ -51,13 +46,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 void Game::render()
 {
     SDL_RenderClear(renderer);
-    
-    textureManager->Instance()->draw("space", 0, 0, 640, 480, renderer);
-    textureManager->Instance()->draw("player1", 0, 0, 268, 268, renderer);
-    
-    for(auto gameObject: gameObjects)
-        gameObject->draw();
-    
+        
     gameStateMachine->render();
 
     SDL_RenderPresent(renderer);
@@ -65,9 +54,6 @@ void Game::render()
 
 void Game::update()
 {
-    for(auto gameObject: gameObjects)
-        gameObject->update();
-    
     gameStateMachine->update();
 }
     
