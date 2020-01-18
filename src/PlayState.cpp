@@ -3,11 +3,14 @@
 #include "../include/PauseState.h"
 #include "../include/InputHandler.h"
 #include "../include/GameOverState.h"
+#include "../include/StateParser.h"
 
 const string PlayState::playID = "PLAY";
 
 bool PlayState::onEnter()
 {
+    StateParser stateParser;
+    stateParser.parseState("test.xml", playID, &gameObjects, &textureIDList);
     cout << "Entering play state" << endl;
     return true;
 }
