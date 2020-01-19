@@ -14,8 +14,11 @@
     </MENU>
     
     <PLAY>
+        <TEXTURES>
+            <texture filename="assets/player1.jpeg" ID="player"/>
+        </TEXTURES>
         <OBJECTS>
-            <object type="player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0" callbackID="1" />
+            <object type="Player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0"/>
         </OBJECTS>
     </PLAY>
     
