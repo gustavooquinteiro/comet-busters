@@ -18,6 +18,7 @@ public:
     
 protected:
     vector<string> textureIDList;
+    static const char* configFile;
 };
 
 #endif
