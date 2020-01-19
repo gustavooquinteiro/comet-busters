@@ -8,6 +8,7 @@ InputHandler* InputHandler::instance = 0;
 InputHandler::InputHandler()
 {
     keyState = SDL_GetKeyboardState(0);
+    mousePosition = new Vector2D();
     for (long unsigned int i = 1; i < sizeof(mouse_buttons); i++)
         mouseButtonStates.push_back(false);        
 }
