@@ -42,7 +42,6 @@ bool MainMenuState::onEnter()
     callbacks.push_back(0);
     callbacks.push_back(menuToPlay);
     callbacks.push_back(exitFromMenu);
-    
     setCallbacks(callbacks);
     return true;
 }
@@ -80,12 +79,13 @@ void MainMenuState::menuToPlay()
 
 void MainMenuState::render()
 {
-    MenuState::render();
-}
+    for (auto object: gameObjects)
+        object->draw();}
 
 void MainMenuState::update()
 {
-    MenuState::update();
+    for (auto object: gameObjects)
+        object->update();
 }
 
 
