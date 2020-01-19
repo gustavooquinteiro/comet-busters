@@ -10,7 +10,7 @@ const string PlayState::playID = "PLAY";
 bool PlayState::onEnter()
 {
     StateParser stateParser;
-    stateParser.parseState("test.xml", playID, &gameObjects, &textureIDList);
+    stateParser.parseState(configFile, playID, &gameObjects, &textureIDList);
     cout << "Entering play state" << endl;
     return true;
 }
