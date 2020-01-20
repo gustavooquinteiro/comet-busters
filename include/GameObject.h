@@ -44,20 +44,23 @@ protected:
 };
 
 
-class SDLGameObject: public GameObject
+class ShooterObject: public GameObject
 {
 public:
-    SDLGameObject();
-    ~SDLGameObject();
+    ~ShooterObject();
     virtual void draw();
     virtual void update();
     virtual void clean();
-    virtual void load(const LoaderParams* params);
-    
-    Vector2D& getPosition();
-    int getHeight();
-    int getWidth();
+    virtual void load(unique_ptr<LoaderParams> const &params);
+    virtual void collision();
+    virtual string type() { return "ShooterObject"; }    
 protected:
+    ShooterObject();
+    int bulletFiringSpeed;
+    int bulletCounter;
+    int moveSpeed;
+    
+    bool playedDeathSound;
 
     
 };
