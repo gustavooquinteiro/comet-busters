@@ -22,5 +22,5 @@ public:
     {
         return new Comet();
     }
-}
+};
 #endif
