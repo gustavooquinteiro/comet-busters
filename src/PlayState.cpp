@@ -3,11 +3,14 @@
 #include "../include/PauseState.h"
 #include "../include/InputHandler.h"
 #include "../include/GameOverState.h"
+#include "../include/StateParser.h"
 
 const string PlayState::playID = "PLAY";
 
 bool PlayState::onEnter()
 {
+    StateParser stateParser;
+    stateParser.parseState(configFile, playID, &gameObjects, &textureIDList);
     cout << "Entering play state" << endl;
     return true;
 }
@@ -33,7 +36,7 @@ void PlayState::update()
         object->update();
     
     SDLGameObject* player = dynamic_cast<SDLGameObject*>(gameObjects[0]); 
-    for (int i = 1; i <= gameObjects.size(); i++)
+    for (long unsigned int i = 1; i < gameObjects.size(); i++)
     {
         if (checkCollision(player, dynamic_cast<SDLGameObject*>(gameObjects[i])))
             Game::Instance()->getStateMachine()->pushState(new GameOverState());

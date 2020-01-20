@@ -8,14 +8,19 @@
             <texture filename="assets/space.jpeg" ID="space" />
         </TEXTURES>
         <OBJECTS>
-            <object type="MenuButton" x="100" y="100" width="400" height="100" textureID="playbutton"/>
-            <object type="MenuButton" x="100" y="300" width="400" height="100" textureID="exitbutton"/>
+            <object type="MenuButton" x="100" y="100" width="400" height="100" textureID="playbutton"  numFrames="0" callbackID="1"/>
+            <object type="MenuButton" x="100" y="300" width="400" height="100" textureID="exitbutton" numFrames="0" callbackID="1"/>
         </OBJECTS>
     </MENU>
     
     <PLAY>
+        <TEXTURES>
+            <texture filename="assets/player1.jpeg" ID="player"/>
+            <texture filename="assets/asteroid.png" ID="comet" />
+        </TEXTURES>
         <OBJECTS>
-            <object type="player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0" callbackID="1" />
+            <object type="Player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0"/>
+            <object type="Comet" x="50" y="50" width="268" height="268" textureID="comet" numFrames="0"/>
         </OBJECTS>
     </PLAY>
     

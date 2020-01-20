@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "GameObject.h"
+#include "GameObjectFactory.h"
 
 class Comet: public SDLGameObject
 {
@@ -14,4 +15,12 @@ public:
     virtual void clean();
 };
 
+class CometCreator: public BaseCreator
+{
+public:
+    GameObject* createGameObject() const
+    {
+        return new Comet();
+    }
+};
 #endif

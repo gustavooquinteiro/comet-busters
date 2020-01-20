@@ -1,3 +1,4 @@
+#include "../include/TextureManager.h"
 #include "../include/InputHandler.h"
 #include "../include/PauseState.h"
 #include "../include/MenuState.h"

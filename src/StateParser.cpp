@@ -1,6 +1,7 @@
 #include "../include/Game.h"
 #include "../include/StateParser.h"
 #include "../include/TextureManager.h"
+#include "../include/GameObjectFactory.h"
 
 bool StateParser::parseState(const char* stateFile, string stateID, vector<GameObject*>* objects, vector<string>* textureIDs)
 {
@@ -54,7 +55,7 @@ void StateParser::parseObjects(TiXmlElement* stateRoot, vector<GameObject *>* ob
 {
      for(TiXmlElement* element = stateRoot->FirstChildElement(); element != NULL; element = element->NextSiblingElement())
     {
-        int x, y, width, height, numFrames, callbackID, animSpeed;
+        int x, y, width, height, numFrames, callbackID = 0, animSpeed = 0;
         string textureID;
         
         element->Attribute("x", &x);

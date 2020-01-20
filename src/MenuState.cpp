@@ -38,11 +38,10 @@ string MainMenuState::getStateID() const{ return this->menuID; }
 bool MainMenuState::onEnter()
 {
     StateParser stateparser;
-    stateparser.parseState("test.xml", menuID, &gameObjects, &textureIDList);
+    stateparser.parseState(configFile, menuID, &gameObjects, &textureIDList);
     callbacks.push_back(0);
     callbacks.push_back(menuToPlay);
     callbacks.push_back(exitFromMenu);
-    
     setCallbacks(callbacks);
     return true;
 }
@@ -80,12 +79,13 @@ void MainMenuState::menuToPlay()
 
 void MainMenuState::render()
 {
-    MenuState::render();
-}
+    for (auto object: gameObjects)
+        object->draw();}
 
 void MainMenuState::update()
 {
-    MenuState::update();
+    for (auto object: gameObjects)
+        object->update();
 }
 
 
