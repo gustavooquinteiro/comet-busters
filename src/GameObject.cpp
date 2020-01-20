@@ -4,7 +4,7 @@
 
 GameObject::GameObject() {}
 
-GameObject::~GameObject() {}
+GameObject::~GameObject(): position(0, 0), velocity(0, 0), acceleration(0, 0), width(0), height(0), currentRow(0), currentFrame(0), statusUpdating(false), isDead(false) {}
 
 SDLGameObject::SDLGameObject(): GameObject() {}
 
