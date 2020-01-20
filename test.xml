@@ -16,9 +16,11 @@
     <PLAY>
         <TEXTURES>
             <texture filename="assets/player1.jpeg" ID="player"/>
+            <texture filename="assets/asteroid.png" ID="comet" />
         </TEXTURES>
         <OBJECTS>
             <object type="Player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0"/>
+            <object type="Comet" x="50" y="50" width="268" height="268" textureID="comet" numFrames="0"/>
         </OBJECTS>
     </PLAY>
     
