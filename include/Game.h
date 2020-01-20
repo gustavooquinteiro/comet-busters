@@ -3,9 +3,7 @@
 
 #include <SDL2/SDL.h> 
 #include <vector>
-#include "Player.h"
 #include "GameObject.h"
-#include "TextureManager.h"
 #include "GameStateMachine.h"
 
 using namespace std;
@@ -38,7 +36,6 @@ private:
     
     GameStateMachine* gameStateMachine;
     
-    TextureManager* textureManager;
     bool run;
 };
 #endif
