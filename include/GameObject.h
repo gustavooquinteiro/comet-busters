@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <memory>
 #include "Vector2D.h"
 #include "LoaderParams.h"
 
@@ -11,14 +12,35 @@ using namespace std;
 class GameObject
 {
 public:
-    virtual void load(const LoaderParams* params) = 0;
+    virtual ~GameObject();
+    virtual void load(unique_ptr<LoaderParams> const &params) = 0;
     virtual void draw() = 0;
     virtual void update() = 0;
     virtual void clean() = 0;
+    virtual void collision() = 0;
+    virtual string type() = 0;
+    Vector2D& getPosition() { return position; }
+    int getHeight() { return height; }
+    int getWidth() { return width; }
+    bool updating() { return statusUpdating; }
+    bool dead() { return isDead; }
+    void setUpdating(bool update) { statusUpdating = update; }
 protected:
     GameObject();
-    virtual ~GameObject();
-
+    Vector2D position;
+    Vector2D velocity;
+    Vector2D acceleration;
+    
+    int width;
+    int height;
+    
+    int currentRow;
+    int currentFrame;
+        
+    string textureId;
+    
+    bool statusUpdating;
+    bool isDead;
 };
 
 
@@ -37,17 +59,7 @@ public:
     int getWidth();
 protected:
 
-    Vector2D position;
-    Vector2D velocity;
-    Vector2D acceleration;
     
-    int width;
-    int height;
-    
-    int currentRow;
-    int currentFrame;
-        
-    string textureId;
 };
 
 #endif
