@@ -3,7 +3,7 @@
 <STATES>
     <MENU>
         <TEXTURES>
-            <texture filename="assets/play_button.png" ID="playbutton"/>
+            <texture filename="assets/play_button.jpg" ID="playbutton"/>
             <texture filename="assets/exit_button.png" ID="exitbutton"/>
             <texture filename="assets/space.jpeg" ID="space" />
         </TEXTURES>
