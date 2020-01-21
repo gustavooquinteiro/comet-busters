@@ -22,9 +22,9 @@ public:
     Vector2D& getPosition() { return position; }
     int getHeight() { return height; }
     int getWidth() { return width; }
-    bool updating() { return statusUpdating; }
+    bool updating() { return isUpdating; }
     bool dead() { return isDead; }
-    void setUpdating(bool update) { statusUpdating = update; }
+    void setUpdating(bool update) { isUpdating = update; }
 protected:
     GameObject();
     Vector2D position;
@@ -39,7 +39,7 @@ protected:
         
     string textureId;
     
-    bool statusUpdating;
+    bool isUpdating;
     bool isDead;
 };
 
