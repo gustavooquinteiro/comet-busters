@@ -5,17 +5,18 @@
 #include "GameObject.h"
 #include "GameObjectFactory.h"
 
-class Player: public SDLGameObject
+class Player: public ShooterObject
 {
 public:
     Player();
     virtual void draw();
     virtual void update();
     virtual void clean();
-    virtual void load(const LoaderParams* params);
+    virtual void load(unique_ptr<LoaderParams> const &params);
     long int getScore() const;
 private:
     void handleInput();    
+    void handleAnimation();
     
     long int score;
 };
