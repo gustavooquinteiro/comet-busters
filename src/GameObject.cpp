@@ -6,20 +6,20 @@ GameObject::GameObject() {}
 
 GameObject::~GameObject(): position(0, 0), velocity(0, 0), acceleration(0, 0), width(0), height(0), currentRow(0), currentFrame(0), statusUpdating(false), isDead(false) {}
 
-SDLGameObject::SDLGameObject(): GameObject() {}
+ShooterObject::ShooterObject(): GameObject() {}
 
-void SDLGameObject::draw()
+void ShooterObject::draw()
 {
     TextureManager::Instance()->draw(textureId, (int)position.getX(), (int)position.getY(), width, height, Game::Instance()->getRenderer());
 }
 
-void SDLGameObject::update()
+void ShooterObject::update()
 {
     velocity += acceleration;
     position += velocity;
 }
 
-void SDLGameObject::load(const LoaderParams* params)
+void ShooterObject::load(unique_ptr<LoaderParams> const &params)
 {
     position = Vector2D(params->getX(), params->getY());
     velocity = Vector2D(0, 0);
@@ -31,16 +31,10 @@ void SDLGameObject::load(const LoaderParams* params)
     currentRow = 1;
 }
 
-int SDLGameObject::getHeight(){ return this->height; }
-
-int SDLGameObject::getWidth(){ return this->width; }
-
-Vector2D& SDLGameObject::getPosition(){ return this->position; }
-
-void SDLGameObject::clean()
+void ShooterObject::clean()
 {
 }
 
-SDLGameObject::~SDLGameObject()
+ShooterObject::~ShooterObject()
 {
 }
