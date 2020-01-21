@@ -1,26 +1,24 @@
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
 
-Player::Player(): SDLGameObject() {}
+Player::Player(): ShooterObject() {}
 
 
 void Player::draw()
 {
-    SDLGameObject::draw();
+    ShooterObject::draw();
 }
 
 void Player::update()
 {
-    acceleration.setX(1);
-    
     handleInput();
-    
-    SDLGameObject::update();    
+    ShooterObject::update();
+    handleAnimation();
 }
 
 void Player::clean()
 {
-    SDLGameObject::clean();
+    ShooterObject::clean();
 }
 
 void Player::handleInput()
@@ -30,13 +28,13 @@ void Player::handleInput()
     if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
         velocity.setX(-2);
     if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-        velocity.setX(-2);
+        velocity.setY(-2);
 }
 
 long int Player::getScore() const{ return this->score; }
 
-void Player::load(const LoaderParams* params)
+void Player::load(unique_ptr<LoaderParams> const &params)
 {
-    SDLGameObject::load(params);
+    ShooterObject::load(params);
 }
 
