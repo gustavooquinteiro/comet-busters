@@ -35,15 +35,15 @@ void PlayState::update()
     for (auto object: gameObjects)
         object->update();
     
-    SDLGameObject* player = dynamic_cast<SDLGameObject*>(gameObjects[0]); 
+    GameObject* player = dynamic_cast<GameObject*>(gameObjects[0]); 
     for (long unsigned int i = 1; i < gameObjects.size(); i++)
     {
-        if (checkCollision(player, dynamic_cast<SDLGameObject*>(gameObjects[i])))
+        if (checkCollision(player, dynamic_cast<GameObject*>(gameObjects[i])))
             Game::Instance()->getStateMachine()->pushState(new GameOverState());
     }
 }
 
-bool PlayState::checkCollision(SDLGameObject* object, SDLGameObject* other)
+bool PlayState::checkCollision(GameObject* object, GameObject* other)
 {
     int leftObject, rightObject, topObject, bottomObject;
     int leftOther, rightOther, topOther, bottomOther;

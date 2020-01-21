@@ -16,7 +16,7 @@ public:
     
     string getStateID() const override;
     
-    bool checkCollision(SDLGameObject* object, SDLGameObject* other);
+    bool checkCollision(GameObject* object, GameObject* other);
 private:
     static const string playID;
     vector<GameObject*> gameObjects;
