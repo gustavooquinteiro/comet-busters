@@ -22,6 +22,50 @@ void BulletHandler::addEnemyBullet(int x, int y, int width, int height, std::str
 {
     EnemyBullet* enemyBullet = new EnemyBullet();
     enemyBullet->load(unique_ptr<LoaderParams>(new LoaderParams(x, y, width, height, textureID, numFrames, 0, 0)), heading);
-    enemmyBullets.push_back(enemyBullet);
+    enemyBullets.push_back(enemyBullet);
+}
+
+void BulletHandler::updateBullets()
+{
+    vector<PlayerBullet*>::iterator playerIterator;
+    for (playerIterator = playerBullets.begin(); playerIterator != playerBullets.end();)
+    {
+        PlayerBullet* bullet = *playerIterator;
+        if (bullet->getPosition().getX() < 0 || bullet->getPosition().getY() < 0 || bullet->dead())
+        {
+            delete *playerIterator;
+            playerBullets.erase(playerIterator);
+        }
+        else
+        {
+            bullet->update();
+            playerIterator++;
+        }
+    }
+    
+     vector<EnemyBullet*>::iterator enemyIterator;
+    for (enemyIterator = enemyBullets.begin(); enemyIterator != enemyBullets.end();)
+    {
+        EnemyBullet* bullet = *enemyIterator;
+        if (bullet->getPosition().getX() < 0 || bullet->getPosition().getY() < 0 || bullet->dead())
+        {
+            delete *enemyIterator;
+            enemyBullets.erase(enemyIterator);
+        }
+        else
+        {
+            bullet->update();
+            enemyIterator++;
+        }
+    }
+}
+
+void BulletHandler::drawBullets()
+{
+    for (auto bullet: playerBullets)
+        bullet->draw();
+    
+    for (auto bullet: enemmyBullets)
+        bullet->draw();
 }
 
