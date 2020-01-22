@@ -13,6 +13,9 @@ public:
     void addPlayerBullet(int x, int y, int width, int height, string textureID, int numFrames, Vector2D heading);
     void addEnemyBullet(int x, int y, int width, int height, string textureID, int numFrames, Vector2D heading);
     static BulletHandler* Instance();
+    
+    void updateBullets();
+    void drawBullets();
 
     vector<PlayerBullet*> getPlayerBullets() const;
     vector<EnemyBullet*> getEnemyBullets() const;
@@ -21,7 +24,7 @@ private:
     static BulletHandler* instance;
     
     vector<PlayerBullet*> playerBullets;
-    vector<EnemyBullet*> enemmyBullets;
+    vector<EnemyBullet*> enemyBullets;
 }
 
 #endif
