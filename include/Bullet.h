@@ -19,4 +19,12 @@ private:
     Vector2D heading;
 };
 
+class EnemyBullet: public PlayerBullet
+{
+public:
+    EnemyBullet(): PlayerBullet(){}
+    virtual ~EnemyBullet();
+    string type(){ return "EnemyBullet"; }
+};
+
 #endif
