@@ -11,7 +11,9 @@ public:
     void update() override;
     void draw() override;
     void clean() override;
-    void load(const LoaderParams * params) override;
+    void load(const unique_ptr<LoaderParams> &params) override;
+    void collision() override;
+    string type(){ return "MenuButton"; }
     void setCallback(void (*callback)());
     int getCallbackID();
 private:
