@@ -65,7 +65,7 @@ void BulletHandler::drawBullets()
     for (auto bullet: playerBullets)
         bullet->draw();
     
-    for (auto bullet: enemmyBullets)
+    for (auto bullet: enemyBullets)
         bullet->draw();
 }
 
