@@ -69,3 +69,7 @@ void BulletHandler::drawBullets()
         bullet->draw();
 }
 
+vector<EnemyBullet *> BulletHandler::getEnemyBullets() const{ return enemyBullets; }
+
+vector<PlayerBullet *> BulletHandler::getPlayerBullets() const{ return playerBullets; }
+
