@@ -10,8 +10,8 @@ class CollisionManager
 {
 public:
     void checkPlayerEnemyBulletCollision(Player* player);
-    void checkPlayerEnemyCollision(Player* player, const vector<GameObject*> gameObjects);
-    void checkEnemyPlayerBulletCollision(const vector<GameObject*> gameObjects);
+    void checkPlayerEnemyCollision(Player* player, const vector<GameObject*> &gameObjects);
+    void checkEnemyPlayerBulletCollision(const vector<GameObject*> &gameObjects);
 };
 
 #endif
