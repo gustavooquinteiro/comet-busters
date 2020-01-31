@@ -38,3 +38,4 @@ void Player::load(unique_ptr<LoaderParams> const &params)
     ShooterObject::load(params);
 }
 
+void Player::handleAnimation(){}
