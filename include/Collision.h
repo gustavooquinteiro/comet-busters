@@ -2,15 +2,15 @@
 #define _COLLISION_
 #include <SDL2/SDL.h>
 
-const static buffer = 4;
+static const int collisionBuffer = 4;
 
 static bool RectRect(SDL_Rect* A, SDL_Rect* B)
 {
-    int aHbuf = A->h / buffer;
-    int aWbuf = A->w / buffer;
+    int aHbuf = A->h / collisionBuffer;
+    int aWbuf = A->w / collisionBuffer;
     
-    int bHbuf = B->h / buffer;
-    int bWbuf = B->w / buffer;
+    int bHbuf = B->h / collisionBuffer;
+    int bWbuf = B->w / collisionBuffer;
     
     if ((A->y + A->h) - aHbuf <= B->y + bHbuf) return false;
     if (A->y + aHbuf >= (B->h + B->y) - bHbuf) return false;
