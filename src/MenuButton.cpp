@@ -37,9 +37,9 @@ void MenuButton::draw()
     GameObject::draw();
 }
 
-void MenuButton::load(const LoaderParams* params)
+void MenuButton::load(const unique_ptr<LoaderParams>& params)
 {
-    GameObject::load(params);
+    GameObject::load(move(params));
     callbackID = params->getCallbackID();    
     currentFrame = MOUSE_OUT;
 }
