@@ -38,3 +38,7 @@ void ShooterObject::clean()
 ShooterObject::~ShooterObject()
 {
 }
+
+void ShooterObject::collision()
+{
+}
