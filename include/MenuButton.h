@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include "GameObjectFactory.h"
 
-class MenuButton: public GameObject
+class MenuButton: public ShooterObject
 {
 public:
     MenuButton();
