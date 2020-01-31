@@ -29,17 +29,21 @@ void MenuButton::update()
 
 void MenuButton::clean()
 {
-    GameObject::clean();
+    ShooterObject::clean();
 }
 
 void MenuButton::draw()
 {
-    GameObject::draw();
+    ShooterObject::draw();
+}
+
+void MenuButton::collision()
+{
 }
 
 void MenuButton::load(const unique_ptr<LoaderParams>& params)
 {
-    GameObject::load(move(params));
+    ShooterObject::load(move(params));
     callbackID = params->getCallbackID();    
     currentFrame = MOUSE_OUT;
 }
