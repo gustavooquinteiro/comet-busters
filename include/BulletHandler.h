@@ -25,6 +25,6 @@ private:
     
     vector<PlayerBullet*> playerBullets;
     vector<EnemyBullet*> enemyBullets;
-}
+};
 
 #endif
