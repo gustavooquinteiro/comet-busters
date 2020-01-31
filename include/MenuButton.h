@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include "GameObjectFactory.h"
 
-class MenuButton: public SDLGameObject
+class MenuButton: public GameObject
 {
 public:
     MenuButton();
