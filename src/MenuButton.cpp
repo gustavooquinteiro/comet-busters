@@ -29,17 +29,21 @@ void MenuButton::update()
 
 void MenuButton::clean()
 {
-    SDLGameObject::clean();
+    ShooterObject::clean();
 }
 
 void MenuButton::draw()
 {
-    SDLGameObject::draw();
+    ShooterObject::draw();
 }
 
-void MenuButton::load(const LoaderParams* params)
+void MenuButton::collision()
 {
-    SDLGameObject::load(params);
+}
+
+void MenuButton::load(const unique_ptr<LoaderParams>& params)
+{
+    ShooterObject::load(move(params));
     callbackID = params->getCallbackID();    
     currentFrame = MOUSE_OUT;
 }

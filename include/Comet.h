@@ -5,14 +5,16 @@
 #include "GameObject.h"
 #include "GameObjectFactory.h"
 
-class Comet: public SDLGameObject
+class Comet: public ShooterObject
 {
 public:
     Comet();
-    virtual void load(const LoaderParams* params);
+    virtual void load(const unique_ptr<LoaderParams> &params);
     virtual void draw();
     virtual void update();
     virtual void clean();
+    virtual void collision();
+    string type(){ return "Comet"; }
 };
 
 class CometCreator: public BaseCreator
