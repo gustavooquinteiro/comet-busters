@@ -25,3 +25,8 @@ void Comet::clean()
 {
     ShooterObject::clean();
 }
+
+void Comet::collision()
+{
+    ShooterObject::collision();
+}
