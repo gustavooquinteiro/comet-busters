@@ -5,7 +5,7 @@
 #include "GameObject.h"
 #include "GameObjectFactory.h"
 
-class Comet: public GameObject
+class Comet: public ShooterObject
 {
 public:
     Comet();

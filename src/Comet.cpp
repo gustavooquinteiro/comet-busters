@@ -1,25 +1,27 @@
 #include "../include/Comet.h"
 
-Comet::Comet(): GameObject() {}
+Comet::Comet(): ShooterObject()
+{
+    srand(time(NULL));
+    acceleration.setX(rand() % 3);
+}
 
 void Comet::load(const unique_ptr<LoaderParams>& params)
 {
-    GameObject::load(move(params));
+    ShooterObject::load(move(params));
 }
 
 void Comet::draw()
 {
-    GameObject::draw();
+    ShooterObject::draw();
 }
 
 void Comet::update()
-{
-    acceleration.setX(1);
-    
-    GameObject::update();
+{  
+    ShooterObject::update();
 }
 
 void Comet::clean()
 {
-    GameObject::clean();
+    ShooterObject::clean();
 }
