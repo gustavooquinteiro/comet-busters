@@ -3,7 +3,7 @@
 <STATES>
     <MENU>
         <TEXTURES>
-            <texture filename="assets/images/play_button.jpg" ID="playbutton"/>
+            <texture filename="assets/images/play_button.png" ID="playbutton"/>
             <texture filename="assets/images/exit_button.png" ID="exitbutton"/>
         </TEXTURES>
         <OBJECTS>
@@ -23,9 +23,24 @@
         </OBJECTS>
     </PLAY>
     
-    <GAMEOVER>
-    </GAMEOVER>
-        
+    <PAUSE>
+        <TEXTURES>
+            <texture filename="assets/images/resume_button.png" ID="resumebuton" />
+        </TEXTURES>
+        <OBJECTS>
+            <object type="MenuButton" x="200" y="100" width="200" height="80" textureID="resumebuton" numFrames="0" callbackID="1"/>
+        </OBJECTS>
+    </PAUSE>
     
+    <GAMEOVER>
+        <TEXTURES>
+            <texture filename="assets/images/restart_button.png" ID="restartbutton"/>
+        </TEXTURES>
+        
+        <OBJECTS>
+            <object type="MenuButton" x="200" y="300" width="200" height="80" textureID="restartbutton" numFrames="0" callbackID="2"/>
+        </OBJECTS>
+    </GAMEOVER>
+
 </STATES>
     
