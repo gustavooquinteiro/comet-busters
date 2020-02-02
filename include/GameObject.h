@@ -22,9 +22,9 @@ public:
     Vector2D& getPosition() { return position; }
     int getHeight() { return height; }
     int getWidth() { return width; }
-    bool updating() { return isUpdating; }
-    bool dead() { return isDead; }
-    void setUpdating(bool update) { isUpdating = update; }
+    bool isUpdating() { return updating; }
+    bool isDead() { return dead; }
+    void setUpdating(bool update) { updating = update; }
 protected:
     GameObject();
     Vector2D position;
@@ -39,8 +39,8 @@ protected:
         
     string textureId;
     
-    bool isUpdating;
-    bool isDead;
+    bool updating;
+    bool dead;
 };
 
 
@@ -56,13 +56,16 @@ public:
     virtual string type() { return "ShooterObject"; }    
 protected:
     ShooterObject();
+    void doDyingAnimation();
+    
     int bulletFiringSpeed;
     int bulletCounter;
     int moveSpeed;
     
-    bool playedDeathSound;
-
+    int dyingTime;
+    int dyingCounter;
     
+    bool playedDeathSound;
 };
 
 #endif
