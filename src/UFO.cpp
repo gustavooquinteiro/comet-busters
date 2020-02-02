@@ -9,7 +9,7 @@ UFO::UFO(): Enemy()
 
 void UFO::update()
 {
-    if (!isDead)
+    if (!isDead())
     {
         velocity.setX(rand() % moveSpeed);
         velocity.setY(moveSpeed);
