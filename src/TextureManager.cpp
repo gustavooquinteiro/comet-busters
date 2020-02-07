@@ -52,3 +52,8 @@ void TextureManager::clearFromTextureMap(string id)
 {
     textureMap.erase(id);
 }
+
+void TextureManager::clearTextureMap()
+{
+    textureMap.clear();
+}
