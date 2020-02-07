@@ -17,7 +17,18 @@ public:
 private:
     void handleInput();    
     void handleAnimation();
+    void setAngle(bool direction);
+    void setVelocity();
     
+    enum Angle
+    {
+        FIRST_QUADRANT,
+        SECOND_QUANDRANT,
+        THIRD_QUADRANT,
+        FOURTH_QUADRANT
+    };
+    
+    Angle myAngle;
     long int score;
 };
 
