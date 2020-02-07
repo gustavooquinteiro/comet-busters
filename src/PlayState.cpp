@@ -11,6 +11,8 @@ const string PlayState::playID = "PLAY";
 
 bool PlayState::onEnter()
 {
+    Game::Instance()->setPlayerLives(5);
+    
     StateParser stateParser;
     stateParser.parseState(configFile, playID, &gameObjects, &textureIDList);
     
@@ -41,15 +43,15 @@ void PlayState::render()
 void PlayState::update()
 {
     if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
-    {
         Game::Instance()->getStateMachine()->pushState(new PauseState());
-    }
     
     BulletHandler::Instance()->updateBullets();
     
+    if (Game::Instance()->getPlayerLives() == 0)
+        Game::Instance()->getStateMachine()->changeState(new GameOverState());
+    
     for (auto object: gameObjects)
         object->update();
-    
 }
 
 string PlayState::getStateID() const{ return this->playID; }
