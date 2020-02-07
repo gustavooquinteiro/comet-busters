@@ -10,7 +10,8 @@ public:
     virtual ~UFO(){}
     UFO();
     virtual void collision();
-    virtual void update();    
+    virtual void update();
+    void shoot();    
 };
 
 class UFOCreator: public BaseCreator
