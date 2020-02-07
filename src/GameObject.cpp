@@ -21,7 +21,7 @@ void ShooterObject::draw()
                                      (Uint32) position.getY(),
                                      width, 
                                      height,
-                                     Game::Instance()->getRenderer());
+                                     Game::Instance()->getRenderer(), angle);
 }
 
 void ShooterObject::update()
