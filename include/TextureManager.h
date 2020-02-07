@@ -15,6 +15,7 @@ public:
     bool load(string filename, string id, SDL_Renderer* renderer); 
     static TextureManager* Instance();
     void clearFromTextureMap(string id);
+    void clearTextureMap();
 private:
     TextureManager();
     map<string, SDL_Texture*> textureMap;
