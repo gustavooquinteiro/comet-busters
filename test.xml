@@ -16,10 +16,12 @@
         <TEXTURES>
             <texture filename="assets/images/player1.jpeg" ID="player"/>
             <texture filename="assets/images/asteroid.png" ID="comet" />
+            <texture filename="assets/images/enemy.png" ID="ufo" />
         </TEXTURES>
         <OBJECTS>
             <object type="Player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0"/>
             <object type="Comet" x="50" y="50" width="268" height="268" textureID="comet" numFrames="0"/>
+            <object type="UFO" x="190" y="70" width="300" height="168" textureID="ufo" numFrames="0"/>
         </OBJECTS>
     </PLAY>
     
