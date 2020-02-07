@@ -37,6 +37,9 @@ bool PlayState::onExit()
 
 void PlayState::render()
 {
+    for (auto gameObject: gameObjects)
+        gameObject->draw();
+    
     BulletHandler::Instance()->drawBullets();
 }
 
