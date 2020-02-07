@@ -27,9 +27,15 @@ void Player::handleInput()
     if (!dead)
     {
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+        {
+            angle += 30;
             velocity.setX(moveSpeed);
+        }
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
+        {
+            angle -= 30;
             velocity.setX(-moveSpeed);
+        }
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
             velocity.setY(-moveSpeed);
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
