@@ -16,6 +16,7 @@ public:
     
     void updateBullets();
     void drawBullets();
+    void clearBullets();
 
     vector<PlayerBullet*> getPlayerBullets() const;
     vector<EnemyBullet*> getEnemyBullets() const;
