@@ -30,7 +30,7 @@ bool PlayState::onEnter()
 bool PlayState::onExit()
 {
     InputHandler::Instance()->reset();
-    
+    BulletHandler::Instance()->clearBullets();
     cout << "Exiting play state" << endl;
     return true;
 }
