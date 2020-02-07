@@ -81,6 +81,13 @@ void BulletHandler::drawBullets()
         bullet->draw();
 }
 
+void BulletHandler::clearBullets()
+{
+    playerBullets.clear();
+    enemyBullets.clear();
+}
+
+
 vector<EnemyBullet*> BulletHandler::getEnemyBullets() const
 { 
     return enemyBullets; 

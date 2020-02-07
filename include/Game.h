@@ -22,19 +22,26 @@ public:
     SDL_Renderer* getRenderer();
     static Game* Instance();
     GameStateMachine* getStateMachine();
+    int getPlayerLives() { return playerLives; }
+    void setPlayerLives(int lives){ playerLives = lives; }
+    int getGameHeight() { return gameHeight; }
+    int getGameWidth() { return gameWidth; }
 private:
     Game();
     ~Game();
     
+    Game(const Game&);
+    Game& operator= (const Game&);
+    
     static Game * instance;
     SDL_Window* window;
     SDL_Renderer* renderer;
-    
-    vector<GameObject*> gameObjects;
-    GameObject* player;
-    GameObject* gameObject;
-    
+        
     GameStateMachine* gameStateMachine;
+    
+    int playerLives;
+    int gameWidth;
+    int gameHeight;
     
     bool run;
 };

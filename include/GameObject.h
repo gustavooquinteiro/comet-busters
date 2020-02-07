@@ -39,6 +39,8 @@ protected:
         
     string textureId;
     
+    double angle;
+    
     bool updating;
     bool dead;
 };
