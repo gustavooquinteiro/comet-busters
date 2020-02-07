@@ -2,6 +2,7 @@
 #define _PLAY_STATE_H_
 
 #include "GameState.h"
+#include "CollisionManager.h"
 #include <vector>
 using namespace std;
 
@@ -16,9 +17,11 @@ public:
     
     string getStateID() const override;
     
-    bool checkCollision(GameObject* object, GameObject* other);
 private:
     static const string playID;
+    
+    CollisionManager collisionManager;
+    
     vector<GameObject*> gameObjects;
 };
 
