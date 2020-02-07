@@ -4,7 +4,7 @@
 
 GameObject::~GameObject(){}
 
-GameObject::GameObject(){}
+GameObject::GameObject():  updating(true), dead(false){}
 
 ShooterObject::ShooterObject(): GameObject(),
                                 bulletFiringSpeed(0),
