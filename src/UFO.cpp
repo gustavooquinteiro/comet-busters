@@ -5,31 +5,56 @@
 UFO::UFO(): Enemy()
 {
     health = 1;
-    moveSpeed = rand() % 4 + 1;
+    moveSpeed = 2;
+}
+
+bool isOutOfWidth(Vector2D position)
+{
+    if (position.getX() > Game::Instance()->getGameWidth() || 
+        position.getX() < 0)
+        return true;
+    return false;
+}
+
+bool isOutOfHeight(Vector2D position)
+{
+    if (position.getY() > Game::Instance()->getGameHeight() || 
+        position.getY() < 0)
+        return true;
+    return false;
+}
+
+bool isInScreen(Vector2D position)
+{
+    if (!isOutOfWidth(position) && !isOutOfHeight(position))
+        return true;
+    return false;
 }
 
 void UFO::update()
 {
     if (!isDead())
     {
-        static int xShift, yShift;
-        xShift = yShift = moveSpeed;
+        static int xShift = moveSpeed;
+        static int yShift = moveSpeed;
+
+        if (!isInScreen(position))
+        {
+            if (isOutOfHeight(position) && isOutOfWidth(position))
+            {
+                xShift = -xShift + 1;
+                yShift = -yShift + 1;
+            }
+            else if (isOutOfWidth(position))
+            {
+                xShift = -xShift;
+            }
+            else if (isOutOfHeight(position))
+            {
+                yShift = -yShift;
+            }
+        }
         
-        if (position.getX() >= Game::Instance()->getGameWidth() &&
-            position.getY() >= Game::Instance()->getGameHeight())
-        {
-           xShift = -xShift | 1;
-           yShift = -yShift | 1;
-        }
-        else if (position.getX() >= Game::Instance()->getGameWidth())
-        {
-            xShift = -xShift | 2;
-        }
-        else if (position.getY() >= Game::Instance()->getGameHeight())
-        {
-            yShift = -yShift | 2;
-        }
-    
         velocity.setX(xShift);
         velocity.setY(yShift);
         shoot();
