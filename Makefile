@@ -1,19 +1,36 @@
 GAME = comet
 
 MAIN = ./src/main.cpp
-SRC = $(filter-out $(MAIN), $(wildcard ./src/*.cpp))
-LIB = $(subst .cpp,.h,$(subst ./src/,./include/, $(SRC)))
-OBJ = $(subst .cpp,.o,$(subst ./src/,./build/, $(SRC)))
+OBJ = $(subst .cpp,.o,$(subst ./src/,./build/, $(filter-out $(MAIN), $(wildcard ./src/*.cpp))))
 
-CFLAGS = -g `sdl2-config --cflags`
-CXXFLAGS = -Wall -Wextra -g `sdl2-config --cflags` -std=c++11
-LDFLAGS  = `sdl2-config --libs` \
-           -lSDL2_image -lSDL2_ttf -lSDL2_mixer -lSDL2_gfx -lm
+CC = g++
+
+CFLAGS = `sdl2-config --cflags`\
+	-g 
+
+CXXFLAGS = `sdl2-config --cflags` \
+	-std=c++11 \
+	-std=c++11 \
+	-Wall \
+	-g \
+	
+
+LDFLAGS = `sdl2-config --libs` \
+           -lSDL2_mixer \
+           -lSDL2_image \
+           -lSDL2_ttf \
+           -lSDL2_gfx \
+           -lm
 
 INCLUDE = -I"/usr/include/SDL"
 
+MKDIR = mkdir -p
+RM = rm -rf
+
 ifeq ($(OS), Windows_NT)
 	ECHO = ECHO
+	MKDIR = 
+	RM = 
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S), Linux)
@@ -21,34 +38,35 @@ else
 	endif
 endif 
 
-all: build comet
+all: build $(GAME)
 
 build:
 	@ $(ECHO) "Creating build folder...\n"
-	@ mkdir -p build
+	@ $(MKDIR) build
 	
-comet: $(OBJ)
-	@ $(ECHO) "Compiling $< in $@...\n"
-	@ g++ $(MAIN) $^ -o $(GAME) $(LDFLAGS)
+$(GAME): $(OBJ)
+	@ $(ECHO) "Linking everything...\n"
+	@ $(CC) $(MAIN) $^ -o $(GAME) $(LDFLAGS)
 	@ $(ECHO) "Executable created: $@\n"
 
 ./build/%.o: ./src/%.cpp ./include/%.h
 	@ $(ECHO) "Compiling $< in $@...\n"
-	@ g++ $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
+	@ $(CC) $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
 	@ $(ECHO) "Compiled $@\n"
 	
 ./build/tinyxmlerror.o: ./src/tinyxmlerror.cpp ./include/tinyxml.h
 	@ $(ECHO) "Compiling $< in $@...\n"
-	@ g++ $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
+	@ $(CC) $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
 	@ $(ECHO) "Compiled $@\n"
+
 ./build/tinyxmlparser.o: ./src/tinyxmlparser.cpp ./include/tinyxml.h
 	@ $(ECHO) "Compiling $< in $@...\n"
-	@ g++ $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
+	@ $(CC) $(CXXFLAGS) $(INCLUDE) $< -c -o $@ 
 	@ $(ECHO) "Compiled $@\n"
 
 clean:
 	@ $(ECHO) "Cleaning workspace...\n"
-	@ rm -rf build/ $(GAME)
+	@ $(RM) build/ $(GAME)
 	@ $(ECHO) "Workspace clean\n"
 
 .PHONY: all clean
