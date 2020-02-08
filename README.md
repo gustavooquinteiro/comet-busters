@@ -14,7 +14,7 @@ For UNIX platforms, is available a [Makefile](Makefile) to compile the game with
 make all
 ```
 
-## :arrow_foward: Execution
+## :arrow_forward: Execution
 
 To run the game, type the command in a terminal: 
 ```sh
