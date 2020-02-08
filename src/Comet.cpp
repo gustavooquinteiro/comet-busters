@@ -18,6 +18,7 @@ void Comet::draw()
 
 void Comet::update()
 {  
+    velocity += acceleration;
     ShooterObject::update();
 }
 

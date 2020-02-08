@@ -3,30 +3,46 @@
 <STATES>
     <MENU>
         <TEXTURES>
-            <texture filename="assets/play_button.jpg" ID="playbutton"/>
-            <texture filename="assets/exit_button.png" ID="exitbutton"/>
-            <texture filename="assets/space.jpeg" ID="space" />
+            <texture filename="assets/images/play_button.png" ID="playbutton"/>
+            <texture filename="assets/images/exit_button.png" ID="exitbutton"/>
         </TEXTURES>
         <OBJECTS>
             <object type="MenuButton" x="100" y="100" width="400" height="100" textureID="playbutton"  numFrames="0" callbackID="1"/>
-            <object type="MenuButton" x="100" y="300" width="400" height="100" textureID="exitbutton" numFrames="0" callbackID="1"/>
+            <object type="MenuButton" x="100" y="300" width="400" height="100" textureID="exitbutton" numFrames="0" callbackID="2"/>
         </OBJECTS>
     </MENU>
     
     <PLAY>
         <TEXTURES>
-            <texture filename="assets/player1.jpeg" ID="player"/>
-            <texture filename="assets/asteroid.png" ID="comet" />
+            <texture filename="assets/images/player1.jpeg" ID="player"/>
+            <texture filename="assets/images/asteroid.png" ID="comet" />
+            <texture filename="assets/images/enemy.png" ID="ufo" />
         </TEXTURES>
         <OBJECTS>
             <object type="Player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0"/>
             <object type="Comet" x="50" y="50" width="268" height="268" textureID="comet" numFrames="0"/>
+            <object type="UFO" x="190" y="70" width="300" height="168" textureID="ufo" numFrames="0"/>
         </OBJECTS>
     </PLAY>
     
-    <GAMEOVER>
-    </GAMEOVER>
-        
+    <PAUSE>
+        <TEXTURES>
+            <texture filename="assets/images/resume_button.png" ID="resumebuton" />
+        </TEXTURES>
+        <OBJECTS>
+            <object type="MenuButton" x="200" y="100" width="200" height="80" textureID="resumebuton" numFrames="0" callbackID="1"/>
+        </OBJECTS>
+    </PAUSE>
     
+    <GAMEOVER>
+        <TEXTURES>
+            <texture filename="assets/images/restart_button.png" ID="restartbutton"/>
+        </TEXTURES>
+        
+        <OBJECTS>
+            <object type="MenuButton" x="200" y="300" width="200" height="80" textureID="restartbutton" numFrames="0" callbackID="2"/>
+        </OBJECTS>
+    </GAMEOVER>
+
 </STATES>
     

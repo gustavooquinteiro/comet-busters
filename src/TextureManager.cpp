@@ -24,7 +24,10 @@ bool TextureManager::load(string filename, string id, SDL_Renderer* renderer)
     return false;
 }
 
-void TextureManager::draw(string id, int x, int y, int width, int height, SDL_Renderer* renderer, SDL_RendererFlip flip)
+void TextureManager::draw(string id, int x, int y, 
+                          int width, int height, 
+                          SDL_Renderer* renderer, 
+                          double angle, SDL_RendererFlip flip)
 {
    SDL_Rect srcRect;
    SDL_Rect dstRect;
@@ -37,9 +40,8 @@ void TextureManager::draw(string id, int x, int y, int width, int height, SDL_Re
    dstRect.x = x;
    dstRect.y = y;
    
-   SDL_RenderCopyEx(renderer, textureMap[id], &srcRect, &dstRect, 0, 0, flip);
+   SDL_RenderCopyEx(renderer, textureMap[id], &srcRect, &dstRect, angle, 0, flip);
 }
-
 
 TextureManager * TextureManager::Instance()
 {
@@ -51,4 +53,9 @@ TextureManager * TextureManager::Instance()
 void TextureManager::clearFromTextureMap(string id)
 {
     textureMap.erase(id);
+}
+
+void TextureManager::clearTextureMap()
+{
+    textureMap.clear();
 }

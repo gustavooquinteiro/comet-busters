@@ -20,7 +20,7 @@ void CollisionManager::checkPlayerEnemyBulletCollision(Player* player)
         
         if (RectRect(rectPlayer, shot))
         {
-            if (!player->dead() && !bullet->dead())
+            if (!player->isDead() && !bullet->isDead())
             {
                 bullet->collision();
                 player->collision();
@@ -41,7 +41,7 @@ void CollisionManager::checkPlayerEnemyCollision(Player* player, const vector<Ga
     
     for (auto object: gameObjects)
     {
-        if (object->type() != "Enemy" || !object->updating())
+        if (object->type() != "Enemy" || !object->isUpdating())
             continue;
         
         SDL_Rect* enemy = new SDL_Rect();
@@ -52,7 +52,7 @@ void CollisionManager::checkPlayerEnemyCollision(Player* player, const vector<Ga
         
         if (RectRect(rectPlayer, enemy))
         {
-            if (!object->dead())
+            if (!object->isDead())
                 player->collision();
         }
         delete enemy;

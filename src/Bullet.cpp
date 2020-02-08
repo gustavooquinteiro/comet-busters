@@ -8,9 +8,10 @@ EnemyBullet::~EnemyBullet()
 {
 }
 
-void PlayerBullet::load(const unique_ptr<LoaderParams> &params, Vector2D heading)
+void PlayerBullet::load(const unique_ptr<LoaderParams> &params,
+                        Vector2D heading)
 {
-    ShooterObject::load(params);
+    ShooterObject::load(move(params));
     this->heading = heading;
 }
 
@@ -21,7 +22,7 @@ void PlayerBullet::draw()
 
 void PlayerBullet::collision()
 {
-    isDead = true;
+    dead = true;
 }
 
 void PlayerBullet::update()

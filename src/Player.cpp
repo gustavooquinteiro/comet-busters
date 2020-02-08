@@ -1,5 +1,6 @@
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
+#include "../include/BulletHandler.h"
 
 Player::Player(): ShooterObject() {}
 
@@ -23,19 +24,49 @@ void Player::clean()
 
 void Player::handleInput()
 {
-    if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-        velocity.setX(2);
-    if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-        velocity.setX(-2);
-    if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-        velocity.setY(-2);
+    if (!dead)
+    {
+        if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+        {
+            angle += 30;
+            velocity.setX(moveSpeed);
+        }
+        if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
+        {
+            angle -= 30;
+            velocity.setX(-moveSpeed);
+        }
+        if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+            velocity.setY(-moveSpeed);
+        if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
+        {
+            if (bulletCounter == bulletFiringSpeed)
+            {
+                BulletHandler::Instance()->addPlayerBullet(position.getX(), 
+                                                           position.getY(), 
+                                                           11, 
+                                                           11,
+                                                           "bullet", 1, 
+                                                           Vector2D(10,0));
+                bulletCounter = 0;
+            }
+            else
+            {
+                bulletCounter = bulletFiringSpeed;
+            }
+        }
+    }
 }
 
 long int Player::getScore() const{ return this->score; }
 
 void Player::load(unique_ptr<LoaderParams> const &params)
 {
-    ShooterObject::load(params);
+    ShooterObject::load(move(params));
+    bulletFiringSpeed = 15;
+    moveSpeed = 3;
+    bulletCounter = bulletFiringSpeed;
+    dyingTime = 100;
 }
 
 void Player::handleAnimation(){}
