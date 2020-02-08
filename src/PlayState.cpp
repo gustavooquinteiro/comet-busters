@@ -54,7 +54,16 @@ void PlayState::update()
         Game::Instance()->getStateMachine()->changeState(new GameOverState());
     
     for (auto object: gameObjects)
+    {
+        if (dynamic_cast<Player*>(object))
+        {
+            Player* player = dynamic_cast<Player*>(object);
+            collisionManager.checkPlayerEnemyCollision(player, gameObjects);
+            collisionManager.checkPlayerEnemyBulletCollision(player);
+        }
+        collisionManager.checkEnemyPlayerBulletCollision(gameObjects);
         object->update();
+    }
 }
 
 string PlayState::getStateID() const{ return this->playID; }

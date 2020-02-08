@@ -53,7 +53,6 @@ void UFO::update()
             {
                 yShift = -yShift;
             }
-            cout << "posicai: " << position.getX() << " and "<< position.getY() << endl;
         }
         
         velocity.setX(xShift);
