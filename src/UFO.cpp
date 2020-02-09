@@ -57,6 +57,7 @@ void UFO::update()
         
         velocity.setX(xShift);
         velocity.setY(yShift);
+        
         shoot();
     } 
     else
@@ -70,13 +71,15 @@ void UFO::update()
 
 void UFO::shoot()
 {
-    int x = rand() % 7 - 3;
-    int y = rand() % 7 - 3;
-    Vector2D heading = Vector2D(x, y);
-    BulletHandler::Instance()->addEnemyBullet(position.getX(), position.getY(), 
-                                              16, 16, "bullet3", 1, heading);
-    BulletHandler::Instance()->drawBullets();
-    
+    static int counter = moveSpeed * 100;
+    if (counter < moveSpeed)
+    {
+        Vector2D heading = velocity;
+        BulletHandler::Instance()->addEnemyBullet(position.getX(), position.getY(), 
+                                                  16, 16, "bullet3", 1, heading);
+        counter = moveSpeed * 100;
+    }
+    counter--;
 }
 
 void UFO::collision()
