@@ -1,4 +1,5 @@
 #include <math.h>
+#include <unistd.h>
 #include "../include/Game.h"
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
@@ -28,10 +29,23 @@ void Player::clean()
     ShooterObject::clean();
 }
 
+void Player::respawn()
+{
+    position.setX(10);
+    position.setY(200);
+    
+    textureId = "player";
+    width = 268;
+    height = 268;
+    currentFrame = 0;
+}
+
 void Player::collision()
 {
     int lives = Game::Instance()->getPlayerLives();
     Game::Instance()->setPlayerLives(lives - 1);
+    if (Game::Instance()->getPlayerLives() != 0)
+        respawn();
 }
 
 void Player::setAngle(bool direction)
