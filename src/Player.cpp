@@ -80,7 +80,7 @@ void Player::handleInput()
                                                            position.getY(), 
                                                            11, 
                                                            11,
-                                                           "bullet", 1, 
+                                                           "bullet3", 1, 
                                                            Vector2D(10,0));
                 bulletCounter = 0;
             }

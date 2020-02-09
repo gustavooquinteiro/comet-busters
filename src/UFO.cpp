@@ -74,7 +74,7 @@ void UFO::shoot()
     int y = rand() % 7 - 3;
     Vector2D heading = Vector2D(x, y);
     BulletHandler::Instance()->addEnemyBullet(position.getX(), position.getY(), 
-                                              16, 16, "bullet", 1, heading);
+                                              16, 16, "bullet3", 1, heading);
     BulletHandler::Instance()->drawBullets();
     
 }
