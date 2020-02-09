@@ -1,4 +1,5 @@
 #include "../include/BulletHandler.h"
+#include "../include/ScreenHandler.h"
 
 BulletHandler* BulletHandler::instance = 0;
 
@@ -39,8 +40,7 @@ void BulletHandler::updateBullets()
     for (playerIterator = playerBullets.begin(); playerIterator != playerBullets.end();)
     {
         PlayerBullet* bullet = *playerIterator;
-        if (bullet->getPosition().getX() < 0 || 
-            bullet->getPosition().getY() < 0 || 
+        if (!isInScreen(bullet->getPosition()) || 
             bullet->isDead())
         {
             delete *playerIterator;
@@ -57,8 +57,7 @@ void BulletHandler::updateBullets()
     for (enemyIterator = enemyBullets.begin(); enemyIterator != enemyBullets.end();)
     {
         EnemyBullet* bullet = *enemyIterator;
-        if (bullet->getPosition().getX() < 0 || 
-            bullet->getPosition().getY() < 0 || 
+        if (!isInScreen(bullet->getPosition()) ||
             bullet->isDead())
         {
             delete *enemyIterator;
