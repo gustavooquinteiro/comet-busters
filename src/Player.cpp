@@ -1,4 +1,5 @@
 #include <math.h>
+#include "../include/Game.h"
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
 #include "../include/BulletHandler.h"
@@ -25,6 +26,12 @@ void Player::update()
 void Player::clean()
 {
     ShooterObject::clean();
+}
+
+void Player::collision()
+{
+    int lives = Game::Instance()->getPlayerLives();
+    Game::Instance()->setPlayerLives(lives - 1);
 }
 
 void Player::setAngle(bool direction)
@@ -57,20 +64,14 @@ void Player::handleInput()
     if (!dead)
     {
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-        {
             setAngle(true);
-            //velocity.setX(moveSpeed);
-        }
+
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-        {
             setAngle(false);
-            //velocity.setX(moveSpeed);
-        }
+
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-        {
-            cout << "posicao x: "  << position.getX() << " y: " << position.getY() << endl;
             setVelocity();
-        }
+
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
         {
             if (bulletCounter == bulletFiringSpeed)
@@ -93,45 +94,36 @@ void Player::handleInput()
 
 void Player::setVelocity()
 {
-//     int xRotated = acceleration.getX() * cos(angle) + acceleration.getY() * sin(angle); 
-//     int yRotated = acceleration.getX() * -sin(angle) + acceleration.getY() * cos(angle); 
-//     
-//     acceleration.setX(xRotated);
-//     acceleration.setY(yRotated);        
-//     cout <<" Aceleration: x: " << acceleration.getX()<< " y: " << acceleration.getY() << endl;
-    cout << angle << endl;
-    acceleration.setX(0);
-    acceleration.setY(0);
+    velocity.setX(0);
+    velocity.setY(0);
     switch(myAngle)
     {
         case FIRST_QUADRANT:
             if (angle == 0)
-                acceleration.setY(-moveSpeed);
+                velocity.setY(-moveSpeed);
             else if (angle == 90)
-                acceleration.setX(moveSpeed);
+                velocity.setX(moveSpeed);
             else
             {
-                acceleration.setY(-moveSpeed);
-                acceleration.setX(moveSpeed);
+                velocity.setY(-moveSpeed);
+                velocity.setX(moveSpeed);
             }
             break;
         case SECOND_QUANDRANT:
-            acceleration.setY(moveSpeed);
+            velocity.setY(moveSpeed);
             if (angle != 180)
-                acceleration.setX(moveSpeed);
+                velocity.setX(moveSpeed);
             break;
         case THIRD_QUADRANT:
-            acceleration.setX(-moveSpeed);
+            velocity.setX(-moveSpeed);
             if (angle != 270)
-                acceleration.setY(moveSpeed);
+                velocity.setY(moveSpeed);
             break;
         case FOURTH_QUADRANT:
-            acceleration.setX(-moveSpeed);
-            acceleration.setY(-moveSpeed);
+            velocity.setX(-moveSpeed);
+            velocity.setY(-moveSpeed);
             break;
     }
-    
-    velocity += acceleration;
 }
 
 
