@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 {
     Uint32 frameStart, frameTime;
     
-    Game::Instance()->init(TITLE, 100, 100, 640, 480, 0);
+    Game::Instance()->init(TITLE, 100, 100, 1280, 720, 0);
    
     while(Game::Instance()->running())
     {
