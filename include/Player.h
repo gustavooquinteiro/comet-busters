@@ -20,6 +20,7 @@ private:
     void handleAnimation();
     void setAngle(bool direction);
     void setVelocity();
+    void respawn();
     
     enum Angle
     {
