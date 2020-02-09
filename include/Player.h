@@ -13,6 +13,7 @@ public:
     virtual void update();
     virtual void clean();
     virtual void load(unique_ptr<LoaderParams> const &params);
+    virtual void collision();
     long int getScore() const;
 private:
     void handleInput();    
