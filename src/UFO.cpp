@@ -1,34 +1,11 @@
 #include "../include/UFO.h"
-#include "../include/Game.h"
+#include "../include/ScreenHandler.h"
 #include "../include/BulletHandler.h"
 
 UFO::UFO(): Enemy()
 {
     health = 1;
     moveSpeed = 2;
-}
-
-bool isOutOfWidth(Vector2D position)
-{
-    if (position.getX() > Game::Instance()->getGameWidth() || 
-        position.getX() < 0)
-        return true;
-    return false;
-}
-
-bool isOutOfHeight(Vector2D position)
-{
-    if (position.getY() > Game::Instance()->getGameHeight() || 
-        position.getY() < 0)
-        return true;
-    return false;
-}
-
-bool isInScreen(Vector2D position)
-{
-    if (!isOutOfWidth(position) && !isOutOfHeight(position))
-        return true;
-    return false;
 }
 
 void UFO::update()
