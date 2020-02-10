@@ -13,13 +13,13 @@ BulletHandler* BulletHandler::Instance()
 }
 
 void BulletHandler::addPlayerBullet(int x, int y, int width, int height, 
-                                    string textureID, int numFrames, 
-                                    Vector2D heading)
+                                    std::string textureID, int numFrames, 
+                                    Vector2D heading, Player* player)
 {
     PlayerBullet* playerBullet = new PlayerBullet();
     LoaderParams* parameters = new LoaderParams(x, y, width, height, 
                                                 textureID, numFrames, 0, 0);
-    playerBullet->load(unique_ptr<LoaderParams>(parameters), heading);
+    playerBullet->load(unique_ptr<LoaderParams>(parameters), heading, player);
     playerBullets.push_back(playerBullet);
 }
 
