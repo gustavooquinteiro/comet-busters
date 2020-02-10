@@ -9,6 +9,15 @@
 
 const string PlayState::playID = "PLAY";
 
+PlayState* PlayState::instance = 0;
+
+PlayState* PlayState::Instance()
+{
+    if (instance == 0)
+        instance = new PlayState();
+    return instance;
+}
+
 bool PlayState::onEnter()
 {
     Game::Instance()->setPlayerLives(5);
@@ -67,3 +76,8 @@ void PlayState::update()
 }
 
 string PlayState::getStateID() const{ return this->playID; }
+
+void PlayState::setObjects(GameObject* object)
+{
+    gameObjects.push_back(object);
+}
