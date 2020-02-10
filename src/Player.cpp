@@ -92,10 +92,10 @@ void Player::handleInput()
             {
                 BulletHandler::Instance()->addPlayerBullet(position.getX(), 
                                                            position.getY(), 
-                                                           11, 
-                                                           11,
+                                                           33, 
+                                                           33,
                                                            "bullet3", 1, 
-                                                           Vector2D(10,0));
+                                                           Vector2D(10,0), this);
                 bulletCounter = 0;
             }
             else
@@ -105,6 +105,12 @@ void Player::handleInput()
         }
     }
 }
+
+void Player::setPoints(int points)
+{
+    score += points;
+}
+
 
 void Player::setVelocity()
 {

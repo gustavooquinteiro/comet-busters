@@ -15,12 +15,14 @@ public:
     virtual void load(unique_ptr<LoaderParams> const &params);
     virtual void collision();
     long int getScore() const;
+    void setPoints(int points);
 private:
     void handleInput();    
     void handleAnimation();
     void setAngle(bool direction);
     void setVelocity();
     void respawn();
+    
     
     enum Angle
     {
