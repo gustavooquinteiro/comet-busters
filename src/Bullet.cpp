@@ -1,9 +1,5 @@
 #include "../include/Bullet.h"
 
-PlayerBullet::~PlayerBullet()
-{
-}
-
 EnemyBullet::~EnemyBullet()
 {
 }
@@ -14,7 +10,32 @@ void EnemyBullet::load(const unique_ptr<LoaderParams>& params, Vector2D heading)
     this->heading = heading;
 }
 
+void EnemyBullet::update()
+{
+    velocity.setX(heading.getX());
+    velocity.setY(heading.getY());
+    ShooterObject::update();
+}
 
+void EnemyBullet::collision()
+{
+    dead = true;
+}
+
+void EnemyBullet::draw()
+{
+    ShooterObject::draw();
+}
+
+void EnemyBullet::clean()
+{
+    ShooterObject::clean();
+}
+
+
+PlayerBullet::~PlayerBullet()
+{
+}
 void PlayerBullet::load(const unique_ptr<LoaderParams> &params,
                         Vector2D heading, Player* player)
 {
