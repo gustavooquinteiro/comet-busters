@@ -16,7 +16,7 @@ public:
     string type(){ return "Comet"; }
     int getPoints(){ return points; }
 private:
-    Comet(int points, int health);
+    Comet(int points, int health, float mass);
         
     int points;
 };
