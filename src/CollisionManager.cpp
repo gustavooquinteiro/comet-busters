@@ -1,27 +1,23 @@
 #include "../include/CollisionManager.h"
 #include "../include/BulletHandler.h"
 #include "../include/Collision.h"
+#include "../include/Enemy.h"
 
 void CollisionManager::checkPlayerEnemyBulletCollision(Player* player)
 {
-    SDL_Rect* rectPlayer = new SDL_Rect();
-    rectPlayer->x = player->getPosition().getX();
-    rectPlayer->y = player->getPosition().getY();
-    rectPlayer->h = player->getHeight();
-    rectPlayer->w = player->getWidth();
     
+    SDL_Rect* rectPlayer = GameObjectToSDLRect(player);
+        
     for (auto bullet: BulletHandler::Instance()->getEnemyBullets())
     {
-        SDL_Rect* shot = new SDL_Rect();
-        shot->x = bullet->getPosition().getX();
-        shot->y = bullet->getPosition().getY();
-        shot->h = bullet->getHeight();
-        shot->w = bullet->getWidth();
+        SDL_Rect* shot = GameObjectToSDLRect(bullet);
         
         if (RectRect(rectPlayer, shot))
         {
             if (!player->isDead() && !bullet->isDead())
             {
+                resolveCollision(player, bullet);
+                cout << "collision player and enemy bullet" << endl;
                 bullet->collision();
                 player->collision();
             }
@@ -33,27 +29,24 @@ void CollisionManager::checkPlayerEnemyBulletCollision(Player* player)
 
 void CollisionManager::checkPlayerEnemyCollision(Player* player, const vector<GameObject *> &gameObjects)
 {
-    SDL_Rect* rectPlayer = new SDL_Rect();
-    rectPlayer->x = player->getPosition().getX();
-    rectPlayer->y = player->getPosition().getY();
-    rectPlayer->h = player->getHeight();
-    rectPlayer->w = player->getWidth();
+    SDL_Rect* rectPlayer = GameObjectToSDLRect(player);
     
     for (auto object: gameObjects)
     {
         if (object->type() != "Enemy" || !object->isUpdating())
             continue;
         
-        SDL_Rect* enemy = new SDL_Rect();
-        enemy->x = object->getPosition().getX();
-        enemy->y = object->getPosition().getY();
-        enemy->h = object->getHeight();
-        enemy->w = object->getWidth();
+        SDL_Rect* enemy = GameObjectToSDLRect(object);
         
         if (RectRect(rectPlayer, enemy))
         {
             if (!object->isDead())
+            {
+                resolveCollision(player, enemy);
+                cout << "collision player and enemy" << endl;
                 player->collision();
+                object->collision();
+            }
         }
         delete enemy;
     }
@@ -69,21 +62,19 @@ void CollisionManager::checkEnemyPlayerBulletCollision(const vector<GameObject *
             if (object->type() != "Enemy")
                 continue;
             
-            SDL_Rect* rectEnemy = new SDL_Rect();
-            rectEnemy->x = object->getPosition().getX();
-            rectEnemy->y = object->getPosition().getY();
-            rectEnemy->h = object->getHeight();
-            rectEnemy->w = object->getWidth();
+            SDL_Rect* rectEnemy = GameObjectToSDLRect(object);
             
-            SDL_Rect* playerShot = new SDL_Rect();
-            playerShot->x = playerBullets->getPosition().getX();
-            playerShot->y = playerBullets->getPosition().getY();
-            playerShot->h = playerBullets->getHeight();
-            playerShot->w = playerBullets->getWidth();
+            SDL_Rect* playerShot = GameObjectToSDLRect(playerBullets);
             
             if (RectRect(rectEnemy, playerShot))
             {
-                playerBullets->collision();
+                resolveCollision(playerBullets, object);
+                cout << "collision player bullet and enemy" << endl;
+                if (dynamic_cast<Enemy*>(object))
+                {
+                    Enemy* enemy = dynamic_cast<Enemy*>(object);
+                    playerBullets->collision(enemy);
+                }
                 object->collision();
             }
             
