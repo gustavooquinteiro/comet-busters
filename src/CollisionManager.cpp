@@ -42,7 +42,7 @@ void CollisionManager::checkPlayerEnemyCollision(Player* player, const vector<Ga
         {
             if (!object->isDead())
             {
-                resolveCollision(player, enemy);
+                resolveCollision(player, object);
                 cout << "collision player and enemy" << endl;
                 player->collision();
                 object->collision();
