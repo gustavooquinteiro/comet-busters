@@ -23,13 +23,17 @@ private:
     Player* player;
 };
 
-class EnemyBullet: public PlayerBullet
+class EnemyBullet: public ShooterObject
 {
 public:
-    EnemyBullet(): PlayerBullet(){}
+    EnemyBullet(): ShooterObject(){}
     virtual ~EnemyBullet();
     string type(){ return "EnemyBullet"; }
     void load(const unique_ptr<LoaderParams> &params, Vector2D heading);
+    void draw() override;
+    void collision();
+    void update() override;
+    void clean() override;
 private:
     Vector2D heading;
 };

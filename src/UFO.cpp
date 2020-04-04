@@ -5,6 +5,8 @@ UFO::UFO(): Enemy()
 {
     health = 1;
     moveSpeed = 2;
+    mass = 100.f;
+    restitution = 4.f;
 }
 
 void UFO::update()

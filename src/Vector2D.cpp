@@ -87,4 +87,7 @@ void Vector2D::normalize()
     (*this) *= 1 / this->length();
 }
 
-
+float scalarProduct(const Vector2D& a, const Vector2D& b)
+{
+    return a.getX() * b.getX() + a.getY() * b.getY();
+}

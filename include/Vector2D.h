@@ -13,7 +13,7 @@ public:
     void setX(float x);
     void setY(float y);
     
-    float length();
+    float length();    
     Vector2D operator+(const Vector2D& vector);
     Vector2D& operator+=(const Vector2D& vector2);
     Vector2D operator*(float scalar);
@@ -22,10 +22,13 @@ public:
     Vector2D& operator-=(const Vector2D& vector2);
     Vector2D operator/(float scalar);
     Vector2D& operator /=(float scalar);
+    
     void normalize();
 private:
     float x;
     float y;
 };
+
+float scalarProduct(const Vector2D& a, const Vector2D& b);
 
 #endif

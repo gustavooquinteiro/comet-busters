@@ -18,7 +18,7 @@ protected:
     int health;
     int points;
     
-    Enemy(): ShooterObject(){}
+    Enemy();
     virtual ~Enemy(){}    
 };
 

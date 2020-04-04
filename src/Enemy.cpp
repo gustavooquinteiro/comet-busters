@@ -1,6 +1,11 @@
 #include "../include/Enemy.h"
 #include "../include/ScreenHandler.h"
 
+Enemy::Enemy(): ShooterObject()
+{
+    moveSpeed = 2;
+}
+
 void Enemy::update()
 {
     if (!isDead())
@@ -24,7 +29,6 @@ void Enemy::update()
                 yShift = -yShift;
             }
         }
-        
         velocity.setX(xShift);
         velocity.setY(yShift);
     }
@@ -34,7 +38,6 @@ void Enemy::update()
         velocity.setY(0);
         // TODO: Dying animation
     }
-    
     ShooterObject::update();
 }
 

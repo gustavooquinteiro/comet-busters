@@ -20,11 +20,15 @@ public:
     virtual void collision() = 0;
     virtual string type() = 0;
     Vector2D& getPosition() { return position; }
+    Vector2D& getVelocity() { return velocity; }
     int getHeight() { return height; }
     int getWidth() { return width; }
+    float getRestitution() { return restitution; }
+    float getMass() { return mass; }
     bool isUpdating() { return updating; }
     bool isDead() { return dead; }
     void setUpdating(bool update) { updating = update; }
+    void setVelocity(Vector2D newVelocity) { velocity = newVelocity; }
 protected:
     GameObject();
     Vector2D position;
@@ -43,6 +47,10 @@ protected:
     
     bool updating;
     bool dead;
+    
+    float mass;
+    float restitution;
+      
 };
 
 
