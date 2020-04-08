@@ -1,4 +1,5 @@
 #include "../include/Bullet.h"
+#include <ctime>
 
 EnemyBullet::~EnemyBullet()
 {
@@ -12,8 +13,12 @@ void EnemyBullet::load(const unique_ptr<LoaderParams>& params, Vector2D heading)
 
 void EnemyBullet::update()
 {
-    velocity.setX(heading.getX());
-    velocity.setY(heading.getY());
+    int xShift = heading.getX();
+    int yShift = heading.getY();
+    if (heading.getX() < 0) xShift -= rand() % 3;
+    if (heading.getY() < 0) yShift -= rand() % 3;
+    this->velocity.setX(xShift);
+    this->velocity.setY(yShift);
     ShooterObject::update();
 }
 
