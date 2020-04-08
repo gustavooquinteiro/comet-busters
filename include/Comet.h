@@ -13,7 +13,6 @@ public:
     virtual void update();
     virtual void clean();
     virtual void collision();
-    string type(){ return "Comet"; }
     int getPoints(){ return points; }
 private:
     Comet(int points, int health, float mass);

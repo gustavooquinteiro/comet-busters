@@ -11,7 +11,7 @@ public:
     virtual void draw();
     virtual void update();
     virtual void collision();
-    
+    virtual string type() { return "Enemy"; }
     int getPoints(){ return points; }
     
 protected:
