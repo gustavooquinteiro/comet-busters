@@ -10,7 +10,7 @@ using namespace std;
 class BulletHandler
 {
 public:
-    void addPlayerBullet(int x, int y, int width, int height, string textureID, int numFrames, Vector2D heading);
+    void addPlayerBullet(int x, int y, int width, int height, string textureID, int numFrames, Vector2D heading, Player* player);
     void addEnemyBullet(int x, int y, int width, int height, string textureID, int numFrames, Vector2D heading);
     static BulletHandler* Instance();
     

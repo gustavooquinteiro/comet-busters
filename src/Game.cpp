@@ -79,7 +79,7 @@ void Game::handleEvents()
      if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
          quit();
      if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
-         gameStateMachine->changeState(new PlayState());
+         gameStateMachine->changeState(PlayState::Instance());
 }
 
 void Game::clean()

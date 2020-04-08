@@ -17,8 +17,12 @@ public:
     
     string getStateID() const override;
     
+    void setObjects(GameObject* object);
+    static PlayState* Instance();
+    
 private:
     static const string playID;
+    static PlayState* instance;
     
     CollisionManager collisionManager;
     

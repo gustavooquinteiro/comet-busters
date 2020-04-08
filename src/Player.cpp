@@ -1,12 +1,15 @@
-#include <math.h>
+#include <unistd.h>
+#include "../include/Game.h"
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
 #include "../include/BulletHandler.h"
+#include "../include/AngleHandler.h"
 
 Player::Player(): ShooterObject() 
 {
     angle = 0;
     myAngle = FIRST_QUADRANT;
+    bulletFiringSpeed = 10;
 }
 
 
@@ -27,9 +30,33 @@ void Player::clean()
     ShooterObject::clean();
 }
 
+void Player::respawn()
+{
+    position.setX(10);
+    position.setY(200);
+    
+    textureId = "player";
+    width = 268;
+    height = 268;
+    currentFrame = 0;
+}
+
+void Player::collision()
+{
+    int lives = Game::Instance()->getPlayerLives();
+    Game::Instance()->setPlayerLives(lives - 1);
+    if (Game::Instance()->getPlayerLives() != 0)
+        respawn();
+    else
+    {
+        dead = true;
+        //delete this;
+    }
+}
+
 void Player::setAngle(bool direction)
 {
-    direction? angle += 10: angle -= 10;
+    direction? angle += 5: angle -= 5;
     
     angle = (360 + (int) angle % 360) % 360;
     
@@ -49,7 +76,8 @@ void Player::setAngle(bool direction)
     {
         myAngle = FOURTH_QUADRANT;
     }
-    
+    if (angle < 0) 
+        angle = 360 + angle;
 }
 
 void Player::handleInput()
@@ -57,30 +85,58 @@ void Player::handleInput()
     if (!dead)
     {
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-        {
             setAngle(true);
-            //velocity.setX(moveSpeed);
-        }
+
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-        {
             setAngle(false);
-            //velocity.setX(moveSpeed);
-        }
+
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-        {
-            cout << "posicao x: "  << position.getX() << " y: " << position.getY() << endl;
             setVelocity();
-        }
+
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
         {
             if (bulletCounter == bulletFiringSpeed)
-            {
-                BulletHandler::Instance()->addPlayerBullet(position.getX(), 
-                                                           position.getY(), 
-                                                           11, 
-                                                           11,
-                                                           "bullet", 1, 
-                                                           Vector2D(10,0));
+            {                
+                cout << angle << endl;
+                int x = 129;
+                int y = 129;
+                Vector2D center = position + Vector2D(x, y);
+                
+                
+                int dy = y + calculateYShift(angle);
+                int dx = x + calculateXShift(angle);
+                
+                cout << "dx =" << dx << " e dy ==" << dy << endl;
+                Vector2D bulletPosition;
+                switch (myAngle)
+                {
+                case FIRST_QUADRANT:
+                    bulletPosition = Vector2D(center.getX(), center.getY() - dy);
+                    break;
+                case SECOND_QUANDRANT:
+                    bulletPosition = Vector2D(center.getX() + dx, center.getY());
+                    break;
+                case THIRD_QUADRANT:
+                    bulletPosition = Vector2D(center.getX(), center.getY());
+                    break;
+                case FOURTH_QUADRANT:
+                    bulletPosition = Vector2D(center.getX() + dx, center.getY() - dy);
+                    break;
+
+
+                
+                default:
+                    break;
+                }
+                    
+                cout << "(" << bulletPosition.getX()<< "," << bulletPosition.getY()<<")"<<endl;
+                Vector2D heading = setBulletHeading(angle);
+                BulletHandler::Instance()->addPlayerBullet(bulletPosition.getX(), 
+                                                           bulletPosition.getY(),
+                                                           33, 
+                                                           33,
+                                                           "bullet3", 1, 
+                                                           heading, this);
                 bulletCounter = 0;
             }
             else
@@ -91,47 +147,44 @@ void Player::handleInput()
     }
 }
 
+void Player::setPoints(int points)
+{
+    score += points;
+}
+
+
 void Player::setVelocity()
 {
-//     int xRotated = acceleration.getX() * cos(angle) + acceleration.getY() * sin(angle); 
-//     int yRotated = acceleration.getX() * -sin(angle) + acceleration.getY() * cos(angle); 
-//     
-//     acceleration.setX(xRotated);
-//     acceleration.setY(yRotated);        
-//     cout <<" Aceleration: x: " << acceleration.getX()<< " y: " << acceleration.getY() << endl;
-    cout << angle << endl;
-    acceleration.setX(0);
-    acceleration.setY(0);
+    velocity.setX(0);
+    velocity.setY(0);
     switch(myAngle)
     {
         case FIRST_QUADRANT:
             if (angle == 0)
-                acceleration.setY(-moveSpeed);
+                velocity.setY(-moveSpeed);
             else if (angle == 90)
-                acceleration.setX(moveSpeed);
+                velocity.setX(moveSpeed);
             else
             {
-                acceleration.setY(-moveSpeed);
-                acceleration.setX(moveSpeed);
+                velocity.setY(-moveSpeed);
+                velocity.setX(moveSpeed);
             }
             break;
         case SECOND_QUANDRANT:
-            acceleration.setY(moveSpeed);
+            velocity.setY(moveSpeed);
             if (angle != 180)
-                acceleration.setX(moveSpeed);
+                velocity.setX(moveSpeed);
             break;
         case THIRD_QUADRANT:
-            acceleration.setX(-moveSpeed);
+            velocity.setX(-moveSpeed);
             if (angle != 270)
-                acceleration.setY(moveSpeed);
+                velocity.setY(moveSpeed);
             break;
         case FOURTH_QUADRANT:
-            acceleration.setX(-moveSpeed);
-            acceleration.setY(-moveSpeed);
+            velocity.setX(-moveSpeed);
+            velocity.setY(-moveSpeed);
             break;
     }
-    
-    velocity += acceleration;
 }
 
 

@@ -1,11 +1,10 @@
 #ifndef _COMET_H_
 #define _COMET_H_
 
-#include <SDL2/SDL.h>
-#include "GameObject.h"
+#include "Enemy.h"
 #include "GameObjectFactory.h"
 
-class Comet: public ShooterObject
+class Comet: public Enemy
 {
 public:
     Comet();
@@ -14,7 +13,11 @@ public:
     virtual void update();
     virtual void clean();
     virtual void collision();
-    string type(){ return "Comet"; }
+    int getPoints(){ return points; }
+private:
+    Comet(int points, int health, float mass);
+        
+    int points;
 };
 
 class CometCreator: public BaseCreator

@@ -29,18 +29,18 @@ void TextureManager::draw(string id, int x, int y,
                           SDL_Renderer* renderer, 
                           double angle, SDL_RendererFlip flip)
 {
-   SDL_Rect srcRect;
-   SDL_Rect dstRect;
-   
-   srcRect.x = 0;
-   srcRect.y = 0;
-   srcRect.w = dstRect.w = width;
-   srcRect.h = dstRect.h = height;
-   
-   dstRect.x = x;
-   dstRect.y = y;
-   
-   SDL_RenderCopyEx(renderer, textureMap[id], &srcRect, &dstRect, angle, 0, flip);
+    SDL_Rect srcRect;
+    SDL_Rect dstRect;
+    
+    srcRect.x = 0;
+    srcRect.y = 0;
+    srcRect.w = dstRect.w = width;
+    srcRect.h = dstRect.h = height;
+    
+    dstRect.x = x;
+    dstRect.y = y;
+    
+    SDL_RenderCopyEx(renderer, textureMap[id], &srcRect, &dstRect, angle, 0, flip);
 }
 
 TextureManager * TextureManager::Instance()

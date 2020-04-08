@@ -8,12 +8,17 @@ using namespace std;
 class Enemy: public ShooterObject
 {
 public:
-    virtual string type(){ return "Enemy"; }
+    virtual void draw();
+    virtual void update();
+    virtual void collision();
+    virtual string type() { return "Enemy"; }
+    int getPoints(){ return points; }
     
 protected:
     int health;
+    int points;
     
-    Enemy(): ShooterObject(){}
+    Enemy();
     virtual ~Enemy(){}    
 };
 

@@ -20,8 +20,8 @@
         </TEXTURES>
         <OBJECTS>
             <object type="Player" x="50" y="50" width="268" height="268" textureID="player" numFrames="0"/>
-            <object type="Comet" x="50" y="50" width="268" height="268" textureID="comet" numFrames="0"/>
-            <object type="UFO" x="190" y="70" width="300" height="168" textureID="ufo" numFrames="0"/>
+            <object type="Comet" x="1200" y="500" width="268" height="268" textureID="comet" numFrames="0"/>
+            <object type="UFO" x="1000" y="200" width="300" height="168" textureID="ufo" numFrames="0"/>
         </OBJECTS>
     </PLAY>
     

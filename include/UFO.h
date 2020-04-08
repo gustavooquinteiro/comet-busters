@@ -11,6 +11,7 @@ public:
     UFO();
     virtual void collision();
     virtual void update();
+    virtual void draw();
     void shoot();    
 };
 
