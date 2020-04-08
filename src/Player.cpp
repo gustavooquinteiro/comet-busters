@@ -1,14 +1,15 @@
-#include <math.h>
 #include <unistd.h>
 #include "../include/Game.h"
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
 #include "../include/BulletHandler.h"
+#include "../include/AngleHandler.h"
 
 Player::Player(): ShooterObject() 
 {
     angle = 0;
     myAngle = FIRST_QUADRANT;
+    bulletFiringSpeed = 10;
 }
 
 
@@ -46,11 +47,16 @@ void Player::collision()
     Game::Instance()->setPlayerLives(lives - 1);
     if (Game::Instance()->getPlayerLives() != 0)
         respawn();
+    else
+    {
+        dead = true;
+        //delete this;
+    }
 }
 
 void Player::setAngle(bool direction)
 {
-    direction? angle += 10: angle -= 10;
+    direction? angle += 5: angle -= 5;
     
     angle = (360 + (int) angle % 360) % 360;
     
@@ -70,7 +76,8 @@ void Player::setAngle(bool direction)
     {
         myAngle = FOURTH_QUADRANT;
     }
-    
+    if (angle < 0) 
+        angle = 360 + angle;
 }
 
 void Player::handleInput()
@@ -89,13 +96,47 @@ void Player::handleInput()
         if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
         {
             if (bulletCounter == bulletFiringSpeed)
-            {
-                BulletHandler::Instance()->addPlayerBullet(position.getX(), 
-                                                           position.getY(), 
+            {                
+                cout << angle << endl;
+                int x = 129;
+                int y = 129;
+                Vector2D center = position + Vector2D(x, y);
+                
+                
+                int dy = y + calculateYShift(angle);
+                int dx = x + calculateXShift(angle);
+                
+                cout << "dx =" << dx << " e dy ==" << dy << endl;
+                Vector2D bulletPosition;
+                switch (myAngle)
+                {
+                case FIRST_QUADRANT:
+                    bulletPosition = Vector2D(center.getX(), center.getY() - dy);
+                    break;
+                case SECOND_QUANDRANT:
+                    bulletPosition = Vector2D(center.getX() + dx, center.getY());
+                    break;
+                case THIRD_QUADRANT:
+                    bulletPosition = Vector2D(center.getX(), center.getY());
+                    break;
+                case FOURTH_QUADRANT:
+                    bulletPosition = Vector2D(center.getX() + dx, center.getY() - dy);
+                    break;
+
+
+                
+                default:
+                    break;
+                }
+                    
+                cout << "(" << bulletPosition.getX()<< "," << bulletPosition.getY()<<")"<<endl;
+                Vector2D heading = setBulletHeading(angle);
+                BulletHandler::Instance()->addPlayerBullet(bulletPosition.getX(), 
+                                                           bulletPosition.getY(),
                                                            33, 
                                                            33,
                                                            "bullet3", 1, 
-                                                           Vector2D(10,0), this);
+                                                           heading, this);
                 bulletCounter = 0;
             }
             else
