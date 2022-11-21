@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL_mixer.h>
 #include <map>
+#include <string>
 using namespace std;
 
 enum sound_type
