@@ -1,5 +1,6 @@
 #include "../include/SoundManager.h"
 #include <iostream>
+#include <string>
 
 SoundManager* SoundManager::instance = 0;
 
@@ -15,7 +16,7 @@ SoundManager::SoundManager()
     Mix_OpenAudio(22050, AUDIO_S16, 2, 4096);
 }
 
-bool SoundManager::load(string filename, string id, sound_type type)
+bool SoundManager::load(std::string filename, std::string id, sound_type type)
 {
     if (type == SOUND_MUSIC)
     {
@@ -42,7 +43,7 @@ bool SoundManager::load(string filename, string id, sound_type type)
     return false;
 }
 
-void SoundManager::playMusic(string id, int loop)
+void SoundManager::playMusic(std::string id, int loop)
 {
     Mix_PlayMusic(musics[id], loop);
 }
